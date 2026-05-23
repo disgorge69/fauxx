@@ -147,6 +147,8 @@
 
     <string name="nav_onboarding">Знакомство</string>
     <string name="nav_back_content_desc">Назад</string>
+    <string name="nav_help_content_desc">Помощь</string>
+    <string name="crash_export_sheet_title">Отчёт о сбое</string>
 
     <!-- Navigation -->
     <string name="nav_dashboard">Панель</string>
@@ -154,10 +156,6 @@
     <string name="nav_modules">Модули</string>
     <string name="nav_log">Журнал</string>
     <string name="nav_settings">Настройки</string>
-    <string name="nav_about_privacy">О приложении и приватности</string>
-    <string name="nav_help_cd">Помощь</string>
-    <string name="nav_help">Помощь</string>
-    <string name="nav_contact_us">Связаться</string>
     <!-- LLM-DRAFTED 2026-05-23, PENDING NATIVE-SPEAKER REVIEW -->
     <string name="help_menu_help">Помощь</string>
     <string name="help_menu_contact">Связаться</string>
@@ -188,14 +186,6 @@
     <string name="settings_clear_dialog_title">Удалить все данные?</string>
     <string name="settings_clear_dialog_body">Это навсегда удалит:\n• Все журналы действий\n• Ваш демографический профиль\n• Кэш профиля рекламных платформ\n• Историю генерации персон\n\nВсе настройки будут сброшены. Движок остановится и вернется к Layer 0 (равномерный шум).\n\nЭто действие нельзя отменить.</string>
     <string name="settings_clear_dialog_confirm">Удалить все</string>
-
-    <!-- Intensity and theme labels -->
-    <string name="intensity_low">НИЗКАЯ</string>
-    <string name="intensity_medium">СРЕДНЯЯ</string>
-    <string name="intensity_high">ВЫСОКАЯ</string>
-    <string name="theme_system">СИСТЕМА</string>
-    <string name="theme_light">СВЕТЛАЯ</string>
-    <string name="theme_dark">ТЕМНАЯ</string>
 
     <!-- Dashboard screen -->
     <string name="dashboard_notification_denied">Разрешение на уведомления отклонено — индикатор фоновой активности скрыт. Разрешите уведомления в настройках, чтобы видеть статус защиты.</string>
@@ -264,8 +254,6 @@
     <string name="module_app_signal_desc">Открывает страницы магазинов приложений вне вашего профиля, чтобы сработали attribution pixels</string>
 
     <!-- Log screen -->
-    <string name="log_title">ЖУРНАЛ ДЕЙСТВИЙ</string>
-    <string name="log_export_cd">Экспорт</string>
     <string name="log_export_csv">Экспорт CSV</string>
     <string name="log_export_json">Экспорт JSON</string>
     <string name="log_filter_all">Все</string>
@@ -300,10 +288,6 @@
     <string name="log_export_toast_copied">Скопировано в буфер</string>
 
     <!-- Crash report -->
-    <string name="crash_report_title">Fauxx аварийно завершился</string>
-    <string name="crash_report_body">В прошлой сессии Fauxx аварийно завершился. Вы можете отправить crash report, чтобы помочь с диагностикой. Личные данные из отчета удалены.</string>
-    <string name="crash_report_share">Поделиться отчетом</string>
-    <string name="crash_report_dismiss">Закрыть</string>
     <string name="crash_report_sheet_title">Crash report</string>
 
     <!-- Asset health warnings -->
