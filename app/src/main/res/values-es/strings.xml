@@ -178,6 +178,8 @@
     <string name="nav_settings">Ajustes</string>
     <string name="nav_onboarding">Bienvenida</string>
     <string name="nav_back_content_desc">Atrás</string>
+    <string name="nav_help_content_desc">Ayuda</string>
+    <string name="crash_export_sheet_title">Informe de error</string>
 
     <!-- Demographic enum labels (onboarding pickers) -->
     <string name="age_18_24">18–24</string>

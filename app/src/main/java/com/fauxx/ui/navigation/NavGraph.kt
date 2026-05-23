@@ -185,7 +185,7 @@ private fun HelpMenuButton(
         IconButton(onClick = { expanded = true }) {
             Icon(
                 imageVector = Icons.AutoMirrored.Outlined.HelpOutline,
-                contentDescription = "Help",
+                contentDescription = stringResource(R.string.nav_help_content_desc),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
