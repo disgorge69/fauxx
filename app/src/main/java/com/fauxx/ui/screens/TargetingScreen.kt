@@ -52,6 +52,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.fauxx.R
 import com.fauxx.data.querybank.CategoryPool
 import com.fauxx.targeting.layer1.InterestMapping
 import com.fauxx.targeting.layer1.MappingConfidence
@@ -83,7 +84,7 @@ fun TargetingScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "TARGETING ENGINE",
+            text = stringResource(R.string.targeting_title),
             style = MaterialTheme.typography.titleLarge,
             fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.Bold,
@@ -92,11 +93,12 @@ fun TargetingScreen(
 
         // Layer 1 toggle
         LayerToggleCard(
-            layerName = "Layer 1 — Self Report",
-            description = "Boosts noise away from your declared demographics",
+            layerName = stringResource(R.string.targeting_layer1_name),
+            description = stringResource(R.string.targeting_layer1_description),
             enabled = uiState.layer1Enabled,
             onToggle = { viewModel.setLayer1Enabled(it) },
-            statusText = if (uiState.hasProfile) "Profile set" else "No profile"
+            statusText = if (uiState.hasProfile) stringResource(R.string.targeting_layer1_status_set)
+            else stringResource(R.string.targeting_layer1_status_unset)
         )
 
         // Saved demographic profile (issue #29 — there was no view-or-edit path
@@ -141,12 +143,13 @@ fun TargetingScreen(
 
         // Layer 3 toggle
         LayerToggleCard(
-            layerName = "Layer 3 — Persona Rotation",
-            description = "Maintains coherent synthetic personas (rotates weekly)",
+            layerName = stringResource(R.string.targeting_layer3_name),
+            description = stringResource(R.string.targeting_layer3_description),
             enabled = uiState.layer3Enabled,
             onToggle = { viewModel.setLayer3Enabled(it) },
-            statusText = uiState.currentPersonaName?.let { "Persona: $it" } ?: "No persona yet",
-            actionLabel = "Rotate Now",
+            statusText = uiState.currentPersonaName?.let { stringResource(R.string.targeting_layer3_status_active, it) }
+                ?: stringResource(R.string.targeting_layer3_status_none),
+            actionLabel = stringResource(R.string.targeting_layer3_action_rotate_now),
             onAction = { viewModel.rotatePersona() }
         )
 
@@ -165,28 +168,23 @@ fun TargetingScreen(
             ),
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Clear My Profile")
+            Text(stringResource(R.string.targeting_clear_profile_button))
         }
     }
 
     if (showClearDialog) {
         AlertDialog(
             onDismissRequest = { showClearDialog = false },
-            title = { Text("Clear Profile?") },
-            text = {
-                Text(
-                    "This will delete your demographic profile, all platform data, and persona history. " +
-                    "The engine will revert to uniform random targeting."
-                )
-            },
+            title = { Text(stringResource(R.string.targeting_clear_dialog_title)) },
+            text = { Text(stringResource(R.string.targeting_clear_dialog_body)) },
             confirmButton = {
                 TextButton(onClick = {
                     viewModel.clearProfile()
                     showClearDialog = false
-                }) { Text("Clear", color = MaterialTheme.colorScheme.error) }
+                }) { Text(stringResource(R.string.targeting_clear_dialog_confirm), color = MaterialTheme.colorScheme.error) }
             },
             dismissButton = {
-                TextButton(onClick = { showClearDialog = false }) { Text("Cancel") }
+                TextButton(onClick = { showClearDialog = false }) { Text(stringResource(R.string.action_cancel)) }
             }
         )
     }
@@ -202,7 +200,7 @@ private fun ProfileSummaryCard(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "MY PROFILE",
+                text = stringResource(R.string.targeting_profile_summary_title),
                 style = MaterialTheme.typography.titleSmall,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold,
@@ -212,7 +210,7 @@ private fun ProfileSummaryCard(
 
             if (!state.hasProfile) {
                 Text(
-                    text = "No profile saved. Setting one up lets Layer 1 steer the noise away from your real demographics.",
+                    text = stringResource(R.string.targeting_profile_summary_empty),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -220,26 +218,28 @@ private fun ProfileSummaryCard(
                 Button(
                     onClick = onEditProfile,
                     modifier = Modifier.fillMaxWidth()
-                ) { Text("Set up profile") }
+                ) { Text(stringResource(R.string.targeting_profile_set_up_button)) }
                 return@Card
             }
 
-            ProfileSummaryRow(label = "Age", value = state.ageRange?.let { stringResource(it.displayNameRes()) })
-            ProfileSummaryRow(label = "Gender", value = state.gender?.let { stringResource(it.displayNameRes()) })
-            ProfileSummaryRow(label = "Profession", value = state.profession?.let { stringResource(it.displayNameRes()) })
-            ProfileSummaryRow(label = "Region", value = state.region?.let { stringResource(it.displayNameRes()) })
+            ProfileSummaryRow(label = stringResource(R.string.targeting_profile_row_age), value = state.ageRange?.let { stringResource(it.displayNameRes()) })
+            ProfileSummaryRow(label = stringResource(R.string.targeting_profile_row_gender), value = state.gender?.let { stringResource(it.displayNameRes()) })
+            ProfileSummaryRow(label = stringResource(R.string.targeting_profile_row_profession), value = state.profession?.let { stringResource(it.displayNameRes()) })
+            ProfileSummaryRow(label = stringResource(R.string.targeting_profile_row_region), value = state.region?.let { stringResource(it.displayNameRes()) })
+            val interestsValue = if (state.interests.isEmpty()) null
+            else state.interests
+                .map { stringResource(it.displayNameRes()) }
+                .joinToString(", ")
             ProfileSummaryRow(
-                label = "Interests",
-                value = if (state.interests.isEmpty()) null
-                else state.interests
-                    .joinToString(", ") { it.name.lowercase().replace('_', ' ') }
+                label = stringResource(R.string.targeting_profile_row_interests),
+                value = interestsValue
             )
 
             Spacer(Modifier.height(12.dp))
             OutlinedButton(
                 onClick = onEditProfile,
                 modifier = Modifier.fillMaxWidth()
-            ) { Text("Edit my profile") }
+            ) { Text(stringResource(R.string.targeting_profile_edit_button)) }
         }
     }
 }
@@ -332,7 +332,7 @@ private fun WeightChart(weights: Map<CategoryPool, Float>) {
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "CATEGORY WEIGHTS",
+                text = stringResource(R.string.targeting_category_weights_title),
                 style = MaterialTheme.typography.labelMedium,
                 fontFamily = FontFamily.Monospace,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -352,7 +352,7 @@ private fun WeightChart(weights: Map<CategoryPool, Float>) {
                         else -> MaterialTheme.colorScheme.secondary                       // Neutral
                     }
                     WeightBar(
-                        label = category.name.lowercase().replace("_", " "),
+                        label = stringResource(category.displayNameRes()),
                         value = weight / maxWeight,
                         color = barColor
                     )
@@ -374,13 +374,13 @@ private fun CustomInterestsCard(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "Custom Interests",
+                text = stringResource(R.string.targeting_custom_interests_title),
                 style = MaterialTheme.typography.titleSmall,
                 fontFamily = FontFamily.Monospace,
                 color = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = "Add specific interests to suppress (mapped to nearest category)",
+                text = stringResource(R.string.targeting_custom_interests_description),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -396,7 +396,7 @@ private fun CustomInterestsCard(
                     value = textFieldValue,
                     onValueChange = { textFieldValue = it },
                     modifier = Modifier.weight(1f),
-                    placeholder = { Text("e.g., woodworking") },
+                    placeholder = { Text(stringResource(R.string.onboarding_custom_interest_placeholder)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                     keyboardActions = KeyboardActions(onDone = {
@@ -412,7 +412,7 @@ private fun CustomInterestsCard(
                         textFieldValue = ""
                     }
                 }) {
-                    Icon(Icons.Default.Add, contentDescription = "Add interest")
+                    Icon(Icons.Default.Add, contentDescription = stringResource(R.string.onboarding_add_interest_cd))
                 }
             }
 
@@ -423,11 +423,11 @@ private fun CustomInterestsCard(
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     mappings.forEachIndexed { index, mapping ->
-                        val categoryLabel = mapping.category?.name?.lowercase()?.replace("_", " ")
+                        val categoryLabel = mapping.category?.let { stringResource(it.displayNameRes()) }
                         val label = if (categoryLabel != null) {
-                            "${mapping.interest} → $categoryLabel"
+                            stringResource(R.string.targeting_custom_interest_mapped, mapping.interest, categoryLabel)
                         } else {
-                            "${mapping.interest} (unmapped)"
+                            stringResource(R.string.targeting_custom_interest_unmapped, mapping.interest)
                         }
                         InputChip(
                             selected = true,
@@ -436,7 +436,7 @@ private fun CustomInterestsCard(
                             trailingIcon = {
                                 Icon(
                                     Icons.Default.Close,
-                                    contentDescription = "Remove",
+                                    contentDescription = stringResource(R.string.onboarding_remove_cd),
                                     modifier = Modifier.size(16.dp)
                                 )
                             }

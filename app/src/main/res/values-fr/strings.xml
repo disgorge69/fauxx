@@ -8,9 +8,9 @@
 
     <!-- Notification -->
     <string name="notification_channel_name">Protection de la vie privée</string>
-    <string name="notification_channel_desc">Notifications de la diversification de navigation en arrière-plan de Fauxx</string>
+    <string name="notification_channel_desc">Notifications liées à la diversification de navigation en arrière-plan de Fauxx</string>
     <string name="notification_title">Fauxx</string>
-    <string name="notification_active">Génération d\'activité de navigation variée — %d actions aujourd\'hui</string>
+    <string name="notification_active">Génération d\'une activité de navigation variée — %d actions aujourd\'hui</string>
     <string name="notification_paused_wifi">En pause — en attente du Wi-Fi</string>
     <string name="notification_paused_battery">En pause — batterie faible</string>
     <string name="notification_paused_rate_limit">En pause — limite horaire atteinte</string>
@@ -22,73 +22,73 @@
     <!-- Onboarding -->
     <string name="onboarding_title">FAUXX</string>
     <string name="onboarding_subtitle">La vie privée par le bruit</string>
-    <string name="onboarding_intro">Fauxx protège votre vie privée en générant de l\'activité de navigation synthétique en arrière-plan. Voici ce qu\'il fait :</string>
+    <string name="onboarding_intro">Fauxx protège ta vie privée en générant une activité de navigation synthétique en arrière-plan. Voici ce qu\'il fait :</string>
     <string name="onboarding_bullet_search">Effectue des recherches web sur Google, Bing, DuckDuckGo et Yahoo sur des sujets variés</string>
-    <string name="onboarding_bullet_browse">Visite une grande variété de sites pour diversifier votre profil de navigation</string>
+    <string name="onboarding_bullet_browse">Visite une grande variété de sites pour diversifier ton profil de navigation</string>
     <string name="onboarding_bullet_fingerprint">Fait tourner les empreintes du navigateur (User-Agent, en-têtes de langue)</string>
     <string name="onboarding_bullet_dns">Génère des requêtes DNS vers des domaines variés</string>
-    <string name="onboarding_bullet_battery">Toute l\'activité tourne en arrière-plan et consomme de la batterie et des données</string>
-    <string name="onboarding_optional_profile">Si vous le souhaitez, parlez-nous de vous sur les écrans suivants. Ces informations restent sur votre appareil et nous aident à générer un bruit différent de votre vrai profil. Passez si vous préférez un bruit uniforme.</string>
+    <string name="onboarding_bullet_battery">Toute l\'activité s\'exécute en arrière-plan et consomme de la batterie et des données</string>
+    <string name="onboarding_optional_profile">Si tu le souhaites, parle-nous de toi sur les écrans suivants. Ces informations restent sur ton appareil et nous aident à générer un bruit différent de ton vrai profil. Passe cette étape si tu préfères un bruit uniforme.</string>
     <string name="onboarding_done_title">Tout est prêt !</string>
-    <string name="onboarding_done_body">Fauxx générera une activité de navigation aussi différente que possible de votre signal comportemental réel. Activez la protection depuis le tableau de bord pour démarrer.</string>
+    <string name="onboarding_done_body">Fauxx générera une activité de navigation aussi différente que possible de ton signal comportemental réel. Active la protection depuis le tableau de bord pour démarrer.</string>
     <string name="onboarding_skip">Passer</string>
-    <string name="onboarding_skip_all">Tout passer</string>
+    <string name="onboarding_skip_all">Tout ignorer</string>
     <string name="onboarding_next">Suivant</string>
     <string name="onboarding_done">Terminé</string>
 
     <!-- Onboarding steps -->
-    <string name="onboarding_age_title">Quelle est votre tranche d\'âge ?</string>
-    <string name="onboarding_age_subtitle">Nous aide à éviter de générer une activité qui correspond à votre profil démographique</string>
+    <string name="onboarding_age_title">Quelle est ta tranche d\'âge ?</string>
+    <string name="onboarding_age_subtitle">Nous aide à éviter de générer une activité qui correspond à ton profil démographique</string>
     <string name="onboarding_gender_title">Genre</string>
-    <string name="onboarding_gender_subtitle">Facultatif — utilisé uniquement pour éloigner le bruit de votre démographie</string>
-    <string name="onboarding_interests_title">Vos centres d\'intérêt principaux</string>
-    <string name="onboarding_interests_subtitle">Nous générerons davantage de bruit dans D\'AUTRES catégories</string>
-    <string name="onboarding_custom_interests_title">Ou ajoutez les vôtres</string>
-    <string name="onboarding_custom_interests_subtitle">Saisissez des intérêts précis non listés ci-dessus (par exemple, « menuiserie », « cryptomonnaies »)</string>
+    <string name="onboarding_gender_subtitle">Facultatif — utilisé uniquement pour éloigner le bruit de ton profil démographique</string>
+    <string name="onboarding_interests_title">Tes principaux centres d\'intérêt</string>
+    <string name="onboarding_interests_subtitle">Nous générerons davantage de bruit dans d\'AUTRES catégories</string>
+    <string name="onboarding_custom_interests_title">Ou ajoute les tiens</string>
+    <string name="onboarding_custom_interests_subtitle">Saisis des centres d\'intérêt précis non listés ci-dessus (par exemple, « menuiserie », « cryptomonnaies »)</string>
     <string name="onboarding_profession_title">Profession</string>
     <string name="onboarding_profession_subtitle">Utilisée uniquement pour calculer la distance démographique</string>
-    <string name="onboarding_region_title">Où vous trouvez-vous ?</string>
-    <string name="onboarding_region_subtitle">Sert à générer des recherches et de la navigation suggérant d\'autres régions</string>
+    <string name="onboarding_region_title">Où te trouves-tu ?</string>
+    <string name="onboarding_region_subtitle">Sert à générer des recherches et une activité de navigation suggérant d\'autres régions</string>
 
     <!-- Consent dialog -->
     <string name="consent_title">Avant de commencer</string>
-    <string name="consent_intro">Fauxx effectuera les activités en arrière-plan suivantes :</string>
+    <string name="consent_intro">Fauxx effectuera les activités suivantes en arrière-plan :</string>
     <string name="consent_bullet_search">Rechercher des sujets variés sur Google, Bing, DuckDuckGo et Yahoo</string>
-    <string name="consent_bullet_browse">Visiter divers sites pour élargir votre profil de navigation</string>
+    <string name="consent_bullet_browse">Visiter divers sites pour élargir ton profil de navigation</string>
     <string name="consent_bullet_fingerprint">Faire tourner les empreintes du navigateur (User-Agent, en-têtes de langue)</string>
     <string name="consent_bullet_dns">Générer des requêtes DNS vers des domaines variés</string>
     <string name="consent_bullet_battery">Utiliser la batterie et les données mobiles en arrière-plan</string>
-    <string name="consent_footer">Toute l\'activité est synthétique et reste sur votre appareil. Aucune donnée personnelle n\'est collectée ni transmise.</string>
+    <string name="consent_footer">Toute l\'activité est synthétique et reste sur ton appareil. Aucune donnée personnelle n\'est collectée ni transmise.</string>
     <string name="consent_accept">J\'ai compris, démarrer</string>
     <string name="consent_cancel">Annuler</string>
 
     <!-- About & Privacy -->
     <string name="about_title">À PROPOS ET CONFIDENTIALITÉ</string>
-    <string name="about_app_description">Un outil de confidentialité open source qui empoisonne les profils des courtiers de données et de la publicité en générant, depuis votre appareil, une activité synthétique continue, plausible et hors de votre démographie.</string>
+    <string name="about_app_description">Un outil de confidentialité open source qui empoisonne les profils des courtiers en données et des technologies publicitaires en générant, depuis ton appareil, une activité synthétique continue, plausible et éloignée de ton profil démographique.</string>
     <string name="about_privacy_title">Politique de confidentialité</string>
-    <string name="about_data_on_device_title">Données qui restent sur votre appareil</string>
-    <string name="about_data_on_device_body">Toutes les données personnelles restent exclusivement sur votre appareil et sont chiffrées au repos :\n\n• Profil démographique (âge, genre, intérêts, profession, région)\n• Cache des profils des plateformes publicitaires (catégories d\'intérêt récupérées)\n• Historique des personas synthétiques\n• Journaux d\'audit des actions\n\nCes données sont stockées dans une base chiffrée (SQLCipher) avec une clé gérée par Android Keystore. Elles ne quittent jamais votre appareil sous quelque forme que ce soit.</string>
-    <string name="about_network_title">Requêtes réseau effectuées par l\'app</string>
-    <string name="about_network_body">Fauxx génère une activité de navigation synthétique pour brouiller les profils de pistage. Cela signifie que l\'app va :\n\n• Effectuer des recherches web sur Google, Bing, DuckDuckGo et Yahoo\n• Visiter des URL catégorisées pour accumuler des cookies de pistage variés\n• Charger des pages variées dans des webviews en arrière-plan\n• Résoudre des noms de domaine pour générer du bruit DNS\n• Ouvrir des deep links du store pour des apps hors profil\n\nToutes les requêtes utilisent des en-têtes User-Agent aléatoires et sont limitées en fréquence pour ne pas perturber les services. Les domaines bloqués (réseaux privés, contenu nuisible) ne sont jamais contactés.</string>
-    <string name="about_not_collected_title">Ce que nous NE collectons PAS</string>
-    <string name="about_not_collected_body">• Aucune analytique ni télémétrie\n• Aucun rapport de plantage envoyé à des services externes\n• Aucun identifiant publicitaire ni pixel de pistage\n• Aucun compte côté serveur ni stockage cloud\n• Aucune donnée partagée avec des tiers\n\nFauxx n\'a pas de serveur backend. L\'app est entièrement autonome.</string>
+    <string name="about_data_on_device_title">Données qui restent sur ton appareil</string>
+    <string name="about_data_on_device_body">Toutes les données personnelles restent exclusivement sur ton appareil et sont chiffrées au repos :\n\n• Profil démographique (âge, genre, centres d\'intérêt, profession, région)\n• Cache des profils des plateformes publicitaires (catégories d\'intérêt récupérées)\n• Historique des personas synthétiques\n• Journaux d\'audit des actions\n\nCes données sont stockées dans une base chiffrée (SQLCipher) avec une clé gérée par Android Keystore. Elles ne quittent jamais ton appareil sous quelque forme que ce soit.</string>
+    <string name="about_network_title">Requêtes réseau effectuées par l\'application</string>
+    <string name="about_network_body">Fauxx génère une activité de navigation synthétique pour brouiller les profils de pistage. Cela signifie que l\'application va :\n\n• Effectuer des recherches web sur Google, Bing, DuckDuckGo et Yahoo\n• Visiter des URL catégorisées pour accumuler des cookies de pistage variés\n• Charger des pages variées dans des vues web en arrière-plan\n• Résoudre des noms de domaine pour générer du bruit DNS\n• Ouvrir des liens profonds vers des stores d\'applications pour des apps hors profil\n\nToutes les requêtes utilisent des en-têtes User-Agent aléatoires et sont limitées en fréquence pour ne pas perturber les services ciblés. Les domaines bloqués (réseaux privés, contenu nuisible) ne sont jamais contactés.</string>
+    <string name="about_not_collected_title">Ce que nous ne collectons PAS</string>
+    <string name="about_not_collected_body">• Aucune analyse ni télémétrie\n• Aucun rapport de plantage envoyé à des services externes\n• Aucun identifiant publicitaire ni pixel de pistage\n• Aucun compte côté serveur ni stockage cloud\n• Aucune donnée partagée avec des tiers\n\nFauxx n\'a pas de serveur backend. L\'application est entièrement autonome.</string>
     <string name="about_location_title">Bruit du signal de localisation</string>
-    <string name="about_location_body">S\'il est activé, le module Signal de Localisation génère des requêtes de recherche et visite des sites web suggérant une activité dans des régions différentes de votre emplacement réel, ce qui complique le travail des courtiers de données pour cerner votre lieu de vie.</string>
+    <string name="about_location_body">S\'il est activé, le module Signal de localisation génère des requêtes de recherche et visite des sites web qui suggèrent une activité dans des régions différentes de ta position réelle, ce qui complique la tâche des courtiers en données qui veulent déterminer où tu vis.</string>
     <string name="about_deletion_title">Suppression des données</string>
-    <string name="about_deletion_body">Vous pouvez supprimer toutes les données stockées à tout moment depuis Paramètres > Effacer toutes les données. Cela supprime définitivement votre profil démographique, les caches des plateformes, l\'historique des personas, les journaux d\'actions et réinitialise tous les paramètres à leur valeur par défaut. Désinstaller l\'app supprime également toutes les données.</string>
+    <string name="about_deletion_body">Tu peux supprimer toutes les données stockées à tout moment depuis Paramètres > Effacer toutes les données. Cela supprime définitivement ton profil démographique, les caches des plateformes, l\'historique des personas et les journaux d\'actions, et réinitialise tous les paramètres à leur valeur par défaut. Désinstaller l\'application supprime également toutes les données.</string>
     <string name="about_privacy_url">https://github.com/digital-grease/fauxx/blob/main/PRIVACY.md</string>
     <string name="about_view_full_policy">Voir la politique de confidentialité complète en ligne</string>
     <string name="about_license_title">Licence</string>
     <string name="about_license_body">Fauxx est un logiciel open source. Le code source et les détails de la licence sont disponibles sur le dépôt du projet.</string>
 
     <!-- Support -->
-    <string name="about_support_title">Soutien</string>
-    <string name="about_support_body">Si Fauxx vous est utile, n\'hésitez pas à m\'offrir un café.</string>
-    <string name="about_support_button">Offrez-moi un café</string>
+    <string name="about_support_title">Soutenir Fauxx</string>
+    <string name="about_support_body">Si Fauxx t\'est utile, tu peux m\'offrir un café.</string>
+    <string name="about_support_button">Offre-moi un café</string>
 
     <!-- Play Store flavor: full-version notice -->
-    <string name="full_version_notice_title">Build limitée du Play Store</string>
-    <string name="full_version_notice_body">Pour respecter les règles du Play Store, cette build désactive l\'empoisonnement du profil publicitaire et la simulation de position GPS. Pour la version complète et sans restriction de Fauxx, installez-la depuis F-Droid ou GitHub.</string>
+    <string name="full_version_notice_title">Version Play Store limitée</string>
+    <string name="full_version_notice_body">Pour respecter les règles du Play Store, cette version désactive l\'empoisonnement du profil publicitaire et la simulation de position GPS. Pour obtenir la version complète et sans restriction de Fauxx, installe-la depuis F-Droid ou GitHub.</string>
     <string name="full_version_notice_fdroid">F-Droid</string>
     <string name="full_version_notice_github">GitHub</string>
     <string name="full_version_notice_dismiss">Ne plus afficher</string>
@@ -97,10 +97,90 @@
 
     <!-- Settings: app language -->
     <string name="settings_language_title">Langue de l\'application</string>
-    <string name="settings_language_subtitle_system">Suit la langue de votre appareil</string>
+    <string name="settings_language_subtitle_system">Suit la langue de ton appareil</string>
     <string name="settings_language_subtitle_explicit">L\'activité synthétique utilisera aussi cette langue</string>
-    <string name="settings_language_system_default">Par défaut du système</string>
+    <string name="settings_language_system_default">Langue du système</string>
     <string name="settings_language_coming_soon">Bientôt disponible</string>
+    <!-- LLM-DRAFTED 2026-05-23, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="language_picker_content_desc">Changer la langue de l\'application</string>
+    <string name="settings_intensity_low">Faible</string>
+    <string name="settings_intensity_medium">Moyenne</string>
+    <string name="settings_intensity_high">Élevée</string>
+    <string name="settings_theme_system">Système</string>
+    <string name="settings_theme_light">Clair</string>
+    <string name="settings_theme_dark">Sombre</string>
+
+    <!-- LLM-DRAFTED 2026-05-23, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="category_medical">Santé</string>
+    <string name="category_legal">Juridique</string>
+    <string name="category_automotive">Automobile</string>
+    <string name="category_parenting">Parentalité</string>
+    <string name="category_retirement">Retraite</string>
+    <string name="category_gaming">Jeux vidéo</string>
+    <string name="category_agriculture">Agriculture</string>
+    <string name="category_fashion">Mode</string>
+    <string name="category_academic">Universitaire</string>
+    <string name="category_real_estate">Immobilier</string>
+    <string name="category_cooking">Cuisine</string>
+    <string name="category_sports">Sports</string>
+    <string name="category_finance">Finance</string>
+    <string name="category_travel">Voyages</string>
+    <string name="category_technology">Technologie</string>
+    <string name="category_pets">Animaux</string>
+    <string name="category_home_improvement">Bricolage</string>
+    <string name="category_beauty">Beauté</string>
+    <string name="category_music">Musique</string>
+    <string name="category_fitness">Fitness</string>
+    <string name="category_entertainment">Divertissement</string>
+    <string name="category_food">Alimentation</string>
+    <string name="category_politics">Politique</string>
+    <string name="category_science">Sciences</string>
+    <string name="category_business">Business</string>
+    <string name="category_outdoor_recreation">Plein air</string>
+    <string name="category_crafts">Artisanat</string>
+    <string name="category_history">Histoire</string>
+    <string name="category_environment">Environnement</string>
+    <string name="category_military_defense">Militaire et défense</string>
+    <string name="category_wellness_alternative">Bien-être et médecines alternatives</string>
+    <string name="category_relationships_dating">Relations et rencontres</string>
+
+    <string name="action_type_search_query">RECHERCHE</string>
+    <string name="action_type_ad_click">CLIC PUB</string>
+    <string name="action_type_page_visit">PAGE VISITÉE</string>
+    <string name="action_type_location_spoof">POSITION</string>
+    <string name="action_type_dns_lookup">DNS</string>
+    <string name="action_type_cookie_harvest">COOKIES</string>
+    <string name="action_type_deep_link_visit">DEEP LINK</string>
+    <string name="action_type_fingerprint_rotate">EMPREINTE</string>
+    <string name="action_type_ad_profile_import">IMPORT PUB</string>
+
+    <string name="log_screen_title">JOURNAL D\'ACTIONS</string>
+    <string name="log_export_content_desc">Exporter</string>
+    <string name="log_export_csv">Exporter CSV</string>
+    <string name="log_export_json">Exporter JSON</string>
+    <string name="log_export_chooser_title">Exporter le journal</string>
+    <string name="log_filter_all">Tout</string>
+    <string name="log_detail_type">Type</string>
+    <string name="log_detail_category">Catégorie</string>
+    <string name="log_detail_detail">Détail</string>
+    <string name="log_detail_time">Heure</string>
+    <string name="log_detail_status">État</string>
+    <string name="log_detail_status_success">Succès</string>
+    <string name="log_detail_status_failed">Échec</string>
+    <string name="crash_dialog_title">Fauxx a planté</string>
+    <string name="crash_dialog_body">Fauxx a planté lors de la dernière session. Tu peux partager le rapport d\'incident pour aider à diagnostiquer le problème. Les données personnelles ont été supprimées du rapport.</string>
+    <string name="crash_dialog_share">Partager le rapport</string>
+    <string name="crash_dialog_dismiss">Fermer</string>
+
+    <string name="nav_dashboard">Tableau de bord</string>
+    <string name="nav_targeting">Ciblage</string>
+    <string name="nav_modules">Modules</string>
+    <string name="nav_log">Journal</string>
+    <string name="nav_settings">Paramètres</string>
+    <string name="nav_onboarding">Bienvenue</string>
+    <string name="nav_back_content_desc">Retour</string>
+    <string name="nav_help_content_desc">Aide</string>
+    <string name="crash_export_sheet_title">Rapport d\'incident</string>
 
     <!-- Demographic enum labels (onboarding pickers) -->
     <string name="age_18_24">18–24</string>
@@ -112,15 +192,15 @@
 
     <string name="gender_male">Homme</string>
     <string name="gender_female">Femme</string>
-    <string name="gender_prefer_not_to_say">Préfère ne pas répondre</string>
+    <string name="gender_prefer_not_to_say">Je préfère ne pas répondre</string>
 
     <string name="profession_student">Étudiant·e</string>
     <string name="profession_teacher">Enseignant·e</string>
-    <string name="profession_engineer">Ingénierie</string>
+    <string name="profession_engineer">Ingénieur·e</string>
     <string name="profession_healthcare">Personnel soignant</string>
-    <string name="profession_legal">Juridique</string>
-    <string name="profession_finance_prof">Entreprise / finance</string>
-    <string name="profession_retail">Commerce de détail</string>
+    <string name="profession_legal">Droit / juridique</string>
+    <string name="profession_finance_prof">Business / finance</string>
+    <string name="profession_retail">Vente / commerce</string>
     <string name="profession_trades">Métiers manuels</string>
     <string name="profession_creative">Secteur créatif</string>
     <string name="profession_retired">Retraité·e</string>
@@ -155,7 +235,7 @@
     <string name="onboarding_add_interest_cd">Ajouter un centre d\'intérêt</string>
     <string name="onboarding_remove_cd">Retirer</string>
     <string name="onboarding_unmapped_suffix">non associé</string>
-    <string name="onboarding_custom_interest_placeholder">par exemple, menuiserie</string>
+    <string name="onboarding_custom_interest_placeholder">p. ex., menuiserie</string>
 
     <!-- Dashboard -->
     <string name="dashboard_title">FAUXX</string>
@@ -169,13 +249,171 @@
     <string name="faq_title">FAQ</string>
     <string name="faq_back">Retour</string>
     <string name="help_menu_faq">FAQ</string>
-    <string name="faq_q1_question">Pourquoi Fauxx s\'arrête-t-il parfois et affiche-t-il une notification « Touchez pour reprendre la protection » ?</string>
-    <string name="faq_q1_answer">Fauxx met le moteur en pause volontairement lorsqu\'une de vos contraintes configurées se déclenche :\n\n• Heures calmes : si vous avez configuré une fenêtre d\'heures actives (par défaut 7 h – 23 h), Fauxx s\'arrête à la fin de la fenêtre et publie une notification d\'un toucher programmée pour la prochaine heure de démarrage.\n• WiFi uniquement : si vous avez activé « WiFi uniquement » dans les Paramètres et que vous perdez la WiFi pendant plus de 30 minutes, Fauxx libère le créneau du service au premier plan plutôt que de tourner à vide.\n• Seuil de batterie : si la batterie est en dessous du seuil configuré et que l\'appareil n\'est pas en charge, Fauxx se met en pause jusqu\'à ce que la situation change.\n\nUn appui sur la notification ouvre Fauxx et redémarre la protection. Rien n\'est perdu : vos paramètres, profil, persona et journal d\'actions sont conservés pendant les pauses.\n\nSi vous voyez le moteur s\'arrêter en dehors de ces contraintes configurées, veuillez signaler un problème depuis Paramètres (« Ouvrir un ticket sur GitHub ») — c\'est un bug, pas intentionnel.</string>
+    <!-- LLM-DRAFTED 2026-05-23, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="help_menu_help">Aide</string>
+    <string name="help_menu_contact">Nous contacter</string>
+    <string name="faq_q1_question">Pourquoi Fauxx s\'arrête-t-il parfois et affiche-t-il une notification « Appuie pour reprendre la protection » ?</string>
+    <string name="faq_q1_answer">Android 14 et les versions ultérieures limitent le type de service d\'arrière-plan utilisé par Fauxx à 6 heures cumulées par tranche de 24 heures lorsque l\'application est en arrière-plan. Pour rester largement sous ce plafond, Fauxx s\'arrête volontairement un peu avant et affiche une notification de reprise en un appui, pour que tu puisses relancer la protection la prochaine fois que tu reprends ton téléphone.\n\nTu verras généralement cette notification :\n\n• Le matin si tu as configuré des heures calmes (par défaut 7 h – 23 h). Plutôt que d\'épuiser le budget quotidien en restant inactif la nuit, Fauxx s\'arrête à 23 h et réapparaît à 7 h avec une notification de reprise.\n• Après environ 5 heures de fonctionnement continu en arrière-plan. Fauxx s\'arrête tout seul à 5 h, avec une marge de sécurité d\'1 h sous la limite du système.\n• Après une longue pause sans Wi-Fi si « Wi-Fi uniquement » est activé. Les pauses de plus de 30 minutes libèrent le créneau au lieu de tourner à vide.\n\nAppuyer sur la notification ouvre Fauxx et redémarre la protection. Rien n\'est perdu : tes paramètres, ton profil, ta persona et ton journal d\'actions sont conservés.\n\nCela concerne spécifiquement la version F-Droid / sideload. La version Play Store utilise un autre type de service au premier plan qui n\'a pas la limite de 6 heures ; le comportement est par ailleurs identique.</string>
     <string name="faq_q4_question">Que signifie le « Taux de bruit » sur le tableau de bord ?</string>
-    <string name="faq_q4_answer">C\'est un indicateur de débit : actions du jour divisées par 500, plafonné à 100 %. 500 actions en une journée correspondent à un taux saturé de 100 %.\n\nIl NE mesure PAS la qualité du bruit — si l\'activité synthétique vise des catégories en dehors de votre profil, si elle trompe les systèmes de profilage, ou si elle couvre une variété de sujets. C\'est juste une jauge de cadence.\n\nPour voir où va réellement le bruit, consultez le graphique de poids par catégorie sur l\'écran Ciblage. Les barres rouges sont les catégories que Fauxx supprime (parce qu\'elles correspondent à votre profil réel), les vertes sont celles qu\'il favorise, les grises sont neutres.</string>
-    <!-- faq_q5 rewritten 2026-05-21 for #52 (Layer 2 import retreat) — LLM-DRAFTED, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="faq_q4_answer">C\'est un indicateur de débit : les actions du jour divisées par 500, plafonné à 100 %. 500 actions en une journée correspondent à un taux saturé de 100 %.\n\nIl NE mesure PAS la qualité du bruit — si l\'activité synthétique vise des catégories en dehors de ton profil, si elle trompe les systèmes de profilage ou si elle couvre une grande variété de sujets. C\'est juste une jauge de cadence.\n\nPour voir où va réellement le bruit, consulte le graphique de poids par catégorie sur l\'écran Ciblage. Les barres rouges correspondent aux catégories que Fauxx réduit (parce qu\'elles correspondent à ton profil réel), les barres vertes à celles qu\'il favorise, et les grises sont neutres.</string>
     <string name="faq_q5_question">Comment fonctionne la Couche 2 (Import du profil publicitaire), et où trouver le fichier d\'export ?</string>
     <string name="faq_q5_answer">La Couche 2 récupère le profil de ciblage publicitaire que Google et Facebook conservent déjà sur vous et l\'utilise pour éloigner Fauxx de vos intérêts réels — l\'activité synthétique est amplifiée dans les AUTRES catégories.\n\nVous exportez vos propres données et importez le fichier dans Fauxx ; pas de connexion dans l\'application, pas de scraping automatisé. Android isole les cookies entre les applications, donc Fauxx ne peut vraiment pas voir votre session de navigateur, et Google + Facebook bloquent la connexion depuis n\'importe quelle WebView embarquée, donc un flux « se connecter ici » n\'est pas possible. L\'export piloté par l\'utilisateur contourne les deux.\n\nComment exporter :\n\n• Google — rendez-vous sur takeout.google.com dans votre navigateur, sélectionnez « My Ad Center » spécifiquement (ignorez le reste du Takeout pour garder un fichier léger), choisissez le format JSON, demandez l\'export. Google envoie par courriel un lien de téléchargement, généralement en quelques minutes. Appuyez sur « Importer Google Takeout » dans Fauxx et choisissez le .zip obtenu (ou le fichier MyAdCenter.json qu\'il contient).\n• Facebook — rendez-vous sur accountscenter.facebook.com, choisissez Télécharger vos informations → format JSON → « Publicités et entreprises ». Facebook prépare l\'archive, envoie le lien par courriel, et vous l\'importez via « Importer Facebook DYI ».\n\nÀ savoir :\n\n• Lecture seule. Fauxx ne modifie ni n\'interagit jamais avec vos paramètres publicitaires sur l\'une ou l\'autre plateforme — il ne fait que lire ce qui est dans l\'export.\n• Reste sur l\'appareil. Les catégories importées sont écrites dans la même base de données chiffrée SQLCipher que le reste de vos données. Rien ne quitte votre téléphone.\n• Fréquence de rafraîchissement à votre rythme. Réimportez quand vous voulez une nouvelle photographie — Fauxx vous alerte via un bandeau dans l\'application si le dernier import a plus de 90 jours (avec options de report / désactivation).</string>
     <!-- LLM-DRAFTED 2026-05-19, PENDING NATIVE-SPEAKER REVIEW -->
-    <string name="boot_guard_safe_mode_notice">Fauxx a désactivé la Couche 2 et le moteur après plusieurs blocages au démarrage. Réactivez-les depuis Ciblage et le Tableau de bord quand vous voudrez réessayer.</string>
+    <string name="boot_guard_safe_mode_notice">Fauxx a désactivé la Couche 2 et le moteur après plusieurs blocages au démarrage. Réactive-les depuis Ciblage et le Tableau de bord quand tu voudras réessayer.</string>
+
+    <!-- Modules screen — LLM-DRAFTED 2026-05-16, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="modules_title">MODULES</string>
+    <string name="module_search_name">Empoisonnement de recherche</string>
+    <string name="module_search_description">Effectue des recherches web sur Google, Bing, DuckDuckGo et Yahoo</string>
+    <string name="module_cookie_name">Saturation de cookies</string>
+    <string name="module_cookie_description">Visite plus de 10 000 URL en arrière-plan pour accumuler des cookies de pistage variés</string>
+    <string name="module_dns_name">Bruit DNS</string>
+    <string name="module_dns_description">Résout des domaines variés pour générer un bruit de requêtes DNS visible par le FAI</string>
+    <string name="module_fingerprint_name">Rotation d\'empreintes</string>
+    <string name="module_fingerprint_description">Fait tourner le User-Agent, le bruit canvas et les propriétés du navigateur</string>
+    <string name="module_ad_name">Pollution publicitaire</string>
+    <string name="module_ad_description">Charge des pages saturées de publicités et visite les tableaux de bord des préférences publicitaires</string>
+    <string name="module_location_name">Simulation de position</string>
+    <string name="module_location_description">Injecte des itinéraires GPS synthétiques via MockLocationProvider</string>
+    <string name="module_location_setup_hint">Nécessite d\'activer les Options développeur et de sélectionner Fauxx comme application de position simulée</string>
+    <string name="module_appsignal_name">Signaux d\'applications</string>
+    <string name="module_appsignal_description">Ouvre des pages de stores d\'applications pour des apps hors profil afin de déclencher des pixels d\'attribution</string>
+
+    <string name="module_location_setup_dialog_title">Encore une étape</string>
+    <string name="module_location_setup_dialog_body">Android exige que tu désignes Fauxx comme application de position simulée :\n\n1. Active les Options développeur si ce n\'est pas déjà fait : Paramètres → À propos du téléphone → touche Numéro de build 7 fois.\n\n2. Ouvre Options développeur → \"Sélectionner l\'application de position simulée\" et choisis Fauxx.\n\nSans cette étape, la Simulation de position ne fera tout simplement rien.</string>
+    <string name="module_location_success_title">Position simulée active</string>
+    <string name="module_location_success_body">Fauxx est enregistré comme fournisseur de position simulée du système et injecte des positions GPS synthétiques.</string>
+    <string name="module_location_failure_not_mock_app_title">Fauxx n\'est pas l\'application de position simulée</string>
+    <string name="module_location_failure_not_mock_app_body">Ouvre Options développeur → Sélectionner l\'application de position simulée → choisis Fauxx, puis redémarre le moteur.</string>
+    <string name="module_location_failure_security_title">Fournisseur de position simulée refusé par Android</string>
+    <string name="module_location_failure_security_body">Le système a bloqué addTestProvider alors que l\'autorisation de l\'application était accordée. Essaie de désactiver puis de réactiver Fauxx dans Options développeur → Sélectionner l\'application de position simulée, puis redémarre Fauxx.</string>
+    <string name="module_location_failure_runtime_title">Impossible d\'enregistrer le fournisseur de position simulée</string>
+    <string name="module_location_failure_runtime_body">Android a refusé le fournisseur de position simulée pour une raison inattendue. Consulte les journaux de l\'application pour plus de détails.</string>
+
+    <string name="action_open_developer_options">Ouvrir les Options développeur</string>
+    <string name="action_got_it">Compris</string>
+    <string name="action_cancel">Annuler</string>
+
+    <!-- Settings screen — LLM-DRAFTED 2026-05-16, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="settings_title">PARAMÈTRES</string>
+    <string name="settings_intensity_title">Intensité</string>
+    <string name="settings_intensity_actions_per_hour">%d actions/heure</string>
+    <string name="settings_theme_title">Thème</string>
+    <string name="settings_theme_system_subtitle">Suit le thème de ton appareil</string>
+    <string name="settings_theme_light_subtitle">Toujours clair</string>
+    <string name="settings_theme_dark_subtitle">Toujours sombre</string>
+    <string name="settings_wifi_only_title">Wi-Fi uniquement</string>
+    <string name="settings_wifi_only_description">Mettre en pause avec les données mobiles</string>
+    <string name="settings_resume_on_boot_title">Reprendre après redémarrage</string>
+    <string name="settings_resume_on_boot_description">Après un redémarrage, afficher une notification pour reprendre la protection. Android empêche les applications de démarrer silencieusement en arrière-plan, donc un appui est requis.</string>
+    <string name="settings_battery_threshold_title">Mettre en pause sous</string>
+    <string name="settings_battery_ignore_while_charging_title">Ignorer le seuil pendant la charge</string>
+    <string name="settings_battery_ignore_while_charging_description">Continuer à fonctionner sous le seuil quand l\'appareil est branché.</string>
+    <string name="settings_active_hours_title">Heures actives</string>
+    <string name="settings_active_hours_start_label">Début</string>
+    <string name="settings_active_hours_end_label">Fin</string>
+    <string name="settings_active_hours_description">L\'activité est en pause en dehors de ces heures</string>
+    <string name="settings_active_hours_narrow_window_warning">Une fenêtre d\'activité étroite (%dh) peut constituer un signal traçable à elle seule. Des fenêtres plus larges (12h ou plus) sont plus difficiles à distinguer d\'une utilisation réelle pour les traqueurs.</string>
+    <string name="settings_custom_ua_title">Utiliser mon navigateur</string>
+    <string name="settings_custom_ua_description">Par défaut, Fauxx alterne entre de nombreux identifiants de navigateur — mais les vraies personnes utilisent généralement un seul navigateur, donc cette variété peut elle-même ressembler à du trafic automatisé. Appuie ci-dessous pour utiliser plutôt l\'identifiant du navigateur intégré de cet appareil, afin que le bruit se fonde dans ton activité réelle. Laisse vide pour conserver la rotation par défaut.</string>
+    <string name="settings_custom_ua_use_device_button">Utiliser le navigateur de cet appareil</string>
+    <string name="settings_custom_ua_field_label">Identifiant de navigateur (avancé — laisse vide pour la rotation automatique)</string>
+    <string name="settings_custom_ua_placeholder">Mozilla/5.0 (…)</string>
+    <string name="settings_custom_ua_clear_button">Effacer et reprendre la rotation</string>
+    <string name="settings_clear_all_data_button">Effacer toutes les données</string>
+    <string name="settings_export_debug_logs_button">Exporter les journaux de débogage</string>
+    <string name="settings_about_privacy_button">À propos et politique de confidentialité</string>
+    <string name="settings_version_info">Fauxx v%1$s (build %2$d)</string>
+    <string name="settings_clear_dialog_title">Effacer toutes les données ?</string>
+    <string name="settings_clear_dialog_body">Cela supprimera définitivement :\n• Tous les journaux d\'actions\n• Ton profil démographique\n• Le cache des profils publicitaires\n• L\'historique des personas générés\n\nTous les paramètres seront réinitialisés à leurs valeurs par défaut. Le moteur s\'arrêtera et reviendra à la Couche 0 (bruit uniforme).\n\nCette action est irréversible.</string>
+    <string name="settings_clear_dialog_confirm">Tout effacer</string>
+
+    <!-- Targeting screen — LLM-DRAFTED 2026-05-16, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="targeting_title">MOTEUR DE CIBLAGE</string>
+    <string name="targeting_layer1_name">Couche 1 — Auto-déclaration</string>
+    <string name="targeting_layer1_description">Renforce le bruit en l\'éloignant de tes données démographiques déclarées</string>
+    <string name="targeting_layer1_status_set">Profil configuré</string>
+    <string name="targeting_layer1_status_unset">Aucun profil</string>
+    <string name="targeting_layer2_name">Couche 2 — Scraper adversarial</string>
+    <string name="targeting_layer2_description">Lit les profils des plateformes publicitaires pour trouver les centres d\'intérêt confirmés</string>
+    <string name="targeting_layer2_last_scraped">Dernière extraction : %s</string>
+    <string name="targeting_layer2_action_scrape_now">Extraire maintenant</string>
+    <string name="targeting_layer2_action_scraping">Extraction en cours…</string>
+    <string name="targeting_layer2_action_done">Terminé</string>
+    <string name="targeting_layer2_action_failed_retry">Échec — Réessayer</string>
+    <string name="targeting_layer2_action_sign_in_first">Connecte-toi d\'abord</string>
+    <string name="targeting_layer3_name">Couche 3 — Rotation de personas</string>
+    <string name="targeting_layer3_description">Maintient des personas synthétiques cohérents (rotation hebdomadaire)</string>
+    <string name="targeting_layer3_status_active">Persona : %s</string>
+    <string name="targeting_layer3_status_none">Aucun persona pour le moment</string>
+    <string name="targeting_layer3_action_rotate_now">Faire tourner maintenant</string>
+    <string name="targeting_clear_profile_button">Effacer mon profil</string>
+    <string name="targeting_clear_dialog_title">Effacer le profil ?</string>
+    <string name="targeting_clear_dialog_body">Cela supprimera ton profil démographique, toutes les données des plateformes et l\'historique des personas. Le moteur reviendra à un ciblage aléatoire uniforme.</string>
+    <string name="targeting_clear_dialog_confirm">Effacer</string>
+    <string name="targeting_profile_summary_title">MON PROFIL</string>
+    <string name="targeting_profile_summary_empty">Aucun profil enregistré. En créer un permet à la Couche 1 d\'orienter le bruit loin de tes données démographiques réelles.</string>
+    <string name="targeting_profile_set_up_button">Configurer le profil</string>
+    <string name="targeting_profile_edit_button">Modifier mon profil</string>
+    <string name="targeting_profile_row_age">Âge</string>
+    <string name="targeting_profile_row_gender">Genre</string>
+    <string name="targeting_profile_row_profession">Profession</string>
+    <string name="targeting_profile_row_region">Région</string>
+    <string name="targeting_profile_row_interests">Centres d\'intérêt</string>
+    <string name="targeting_category_weights_title">POIDS PAR CATÉGORIE</string>
+    <string name="targeting_custom_interests_title">Centres d\'intérêt personnalisés</string>
+    <string name="targeting_custom_interests_description">Ajoute des centres d\'intérêt spécifiques à réduire (associés à la catégorie la plus proche)</string>
+    <string name="targeting_custom_interest_mapped">%1$s → %2$s</string>
+    <string name="targeting_custom_interest_unmapped">%s (non associé)</string>
+    <string name="targeting_scrape_dialog_title">La Couche 2 n\'a pas pu lire tes profils publicitaires</string>
+    <string name="targeting_scrape_dialog_body">Le scraper adversarial essaie de lire ce que Google et Facebook pensent savoir de toi, puis éloigne le bruit de ces centres d\'intérêt. Il vient de recevoir une liste vide, ce qui signifie généralement que le scraper n\'a pas de session connectée sur ces sites.\n\nÀ noter : le scraper de Fauxx a sa propre session de navigateur, distincte de Chrome/Brave/Firefox où tu es peut-être déjà connecté(e) — Android n\'autorise pas les applications à partager des cookies de connexion entre elles. Et Google/Facebook n\'autorisent pas non plus la connexion depuis un navigateur intégré dans une app, donc un bouton « se connecter ici » n\'est pas possible.\n\nLa Couche 2 est en cours de refonte pour importer ton profil publicitaire directement (via Google Takeout ou un bookmarklet de navigateur) afin qu\'elle n\'ait plus besoin de session en direct. En attendant, les Couches 1 et 3 fonctionnent toujours sans scraping.</string>
+
+    <!-- Dashboard screen — LLM-DRAFTED 2026-05-16, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="dashboard_warning_notification_denied">Autorisation de notifications refusée — l\'indicateur d\'activité en arrière-plan est masqué. Accorde l\'autorisation de notifications dans les Paramètres pour voir la notification de statut.</string>
+    <string name="dashboard_warning_action_open_settings">Ouvrir les paramètres</string>
+    <string name="dashboard_warning_battery_optimized">L\'optimisation de la batterie d\'Android limite Fauxx. L\'activité en arrière-plan se mettra en pause quand l\'écran sera éteint. Autorise l\'utilisation sans restriction en arrière-plan pour que le moteur continue de fonctionner.</string>
+    <string name="dashboard_warning_action_allow">Autoriser</string>
+    <string name="dashboard_engine_state_active">Génération d\'une activité synthétique</string>
+    <string name="dashboard_engine_state_paused_wifi">Mode Wi-Fi uniquement — en attente du Wi-Fi</string>
+    <string name="dashboard_engine_state_paused_battery">Batterie sous le seuil</string>
+    <string name="dashboard_engine_state_paused_rate_limit">Limite horaire atteinte</string>
+    <string name="dashboard_engine_state_paused_quiet_hours">En dehors des heures actives</string>
+    <string name="dashboard_engine_state_stopped">Moteur arrêté</string>
+    <string name="dashboard_action_use_mobile_data">Utiliser les données mobiles</string>
+    <string name="dashboard_category_distribution_title">RÉPARTITION DES CATÉGORIES</string>
+    <string name="dashboard_category_distribution_help">Montre comment ton bruit synthétique est réparti entre les catégories de sujets. Une répartition plus large signifie que les traqueurs voient un profil plus confus. Les catégories sont pondérées par le moteur de ciblage pour maximiser la distance avec tes centres d\'intérêt réels.</string>
+    <string name="dashboard_category_other">autre</string>
+    <string name="dashboard_chart_legend_entry">%1$s %2$d%%</string>
+    <string name="dashboard_active_persona_title">PERSONA ACTIVE</string>
+    <string name="dashboard_active_persona_help">Une identité synthétique que le moteur adopte pendant environ une semaine. L\'activité est pondérée vers les centres d\'intérêt de cette persona pour créer un bruit cohérent dans le temps — ce qui complique le filtrage du faux signal par les traqueurs. Les personas tournent automatiquement.</string>
+    <string name="dashboard_persona_subtitle">%1$s · %2$s</string>
+    <string name="dashboard_noise_ratio_title">TAUX DE BRUIT</string>
+    <string name="dashboard_noise_ratio_help">Estime quelle part de ton profil de navigation visible correspond à du bruit synthétique plutôt qu\'à de l\'activité réelle. Plus c\'est élevé, mieux c\'est — à 80 %% ou plus, un courtier en données devrait identifier correctement 4 signaux sur 5 comme faux pour construire un profil précis.</string>
+    <string name="dashboard_noise_ratio_value">%d%%</string>
+    <string name="dashboard_battery_dialog_title">Garder Fauxx actif en arrière-plan</string>
+    <string name="dashboard_battery_dialog_body_intro">Android met fortement en pause les apps en arrière-plan pour économiser la batterie. Pour empoisonner les profils en continu, Fauxx doit être exempté de l\'optimisation de la batterie.</string>
+    <string name="dashboard_battery_dialog_body_action">Sur l\'écran suivant, choisis \"Autoriser\" pour que le moteur puisse continuer à générer une activité synthétique quand ton écran est éteint.</string>
+    <string name="dashboard_battery_dialog_continue">Continuer</string>
+    <string name="dashboard_battery_dialog_not_now">Pas maintenant</string>
+
+    <!-- Log export sheet — LLM-DRAFTED 2026-05-16, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="log_export_scrubbed_notice">Toutes les données personnelles ont été supprimées des journaux.</string>
+    <string name="log_export_option_github">Ouvrir un ticket sur GitHub</string>
+    <string name="log_export_option_github_description">Ouvre un formulaire de ticket prérempli. Les journaux sont intégrés directement quand ils tiennent, sinon ils sont copiés dans le presse-papiers pour que tu les colles en dessous.</string>
+    <string name="log_export_option_share">Partager via…</string>
+    <string name="log_export_option_share_description">Envoyer par e-mail, Slack ou une autre app</string>
+    <string name="log_export_option_save">Enregistrer sur l\'appareil</string>
+    <string name="log_export_option_save_description">Enregistre dans le dossier Téléchargements</string>
+    <string name="log_export_option_copy">Copier dans le presse-papiers</string>
+    <string name="log_export_option_copy_description">Copier le texte complet du journal</string>
+    <string name="log_export_toast_crash_report_ready">Rapport de plantage prêt — vérifie et envoie</string>
+    <string name="log_export_toast_trace_truncated">Trace tronquée intégrée ; la trace complète est dans le presse-papiers — colle-la en dessous si tu veux le contexte complet</string>
+    <string name="log_export_toast_no_browser_clipboard">Aucun navigateur trouvé — les journaux ont été copiés dans le presse-papiers</string>
+    <string name="log_export_toast_no_browser_issue_tracker">Aucun navigateur trouvé pour ouvrir le gestionnaire de tickets</string>
+    <string name="log_export_share_text">Fauxx %s — consulte le fichier joint.</string>
+    <string name="log_export_toast_no_sharing_app">Aucune app de partage trouvée</string>
+    <string name="log_export_toast_save_requires_android_10">L\'enregistrement dans Téléchargements nécessite Android 10 ou version ultérieure</string>
+    <string name="log_export_toast_saved_to_downloads">Enregistré dans Téléchargements/%s</string>
+    <string name="log_export_toast_save_failed">Impossible d\'enregistrer le fichier</string>
+    <string name="log_export_toast_copied_to_clipboard">Copié dans le presse-papiers</string>
 </resources>
