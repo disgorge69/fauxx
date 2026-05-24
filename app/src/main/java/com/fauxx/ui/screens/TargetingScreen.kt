@@ -1,5 +1,7 @@
 package com.fauxx.ui.screens
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -50,11 +52,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.fauxx.R
 import com.fauxx.data.querybank.CategoryPool
 import com.fauxx.targeting.layer1.InterestMapping
 import com.fauxx.targeting.layer1.MappingConfidence
+import com.fauxx.targeting.layer2.importers.ImportResult
+import com.fauxx.targeting.layer2.importers.ImportSource
 import com.fauxx.ui.format.displayNameRes
-import com.fauxx.ui.viewmodels.ScrapeState
 import com.fauxx.ui.viewmodels.TargetingUiState
 import com.fauxx.ui.viewmodels.TargetingViewModel
 import androidx.compose.ui.res.stringResource
@@ -80,7 +84,7 @@ fun TargetingScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "TARGETING ENGINE",
+            text = stringResource(R.string.targeting_title),
             style = MaterialTheme.typography.titleLarge,
             fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.Bold,
@@ -89,11 +93,12 @@ fun TargetingScreen(
 
         // Layer 1 toggle
         LayerToggleCard(
-            layerName = "Layer 1 — Self Report",
-            description = "Boosts noise away from your declared demographics",
+            layerName = stringResource(R.string.targeting_layer1_name),
+            description = stringResource(R.string.targeting_layer1_description),
             enabled = uiState.layer1Enabled,
             onToggle = { viewModel.setLayer1Enabled(it) },
-            statusText = if (uiState.hasProfile) "Profile set" else "No profile"
+            statusText = if (uiState.hasProfile) stringResource(R.string.targeting_layer1_status_set)
+            else stringResource(R.string.targeting_layer1_status_unset)
         )
 
         // Saved demographic profile (issue #29 — there was no view-or-edit path
@@ -110,44 +115,41 @@ fun TargetingScreen(
             )
         }
 
-        // Layer 2 toggle
-        val (scrapeLabel, scrapeEnabled) = when (uiState.scrapeState) {
-            ScrapeState.IDLE -> "Scrape Now" to true
-            ScrapeState.RUNNING -> "Scraping…" to false
-            ScrapeState.SUCCESS -> "Done" to false
-            ScrapeState.FAILED -> "Failed — Retry" to true
-            // NEEDS_LOGIN: button stays tappable so user can re-attempt after signing in,
-            // but the dialog rendered below is the primary CTA.
-            ScrapeState.NEEDS_LOGIN -> "Sign in first" to true
-        }
+        // Layer 2 — user-driven import (replaced the live in-app scraper in v0.3.0 per
+        // issue #52; cookie isolation between apps made the old approach unworkable).
         LayerToggleCard(
-            layerName = "Layer 2 — Adversarial Scraper",
-            description = "Reads ad-platform profiles to find confirmed interests",
+            layerName = stringResource(R.string.targeting_layer2_name),
+            description = stringResource(R.string.targeting_layer2_description),
             enabled = uiState.layer2Enabled,
             onToggle = { viewModel.setLayer2Enabled(it) },
-            statusText = "Last scraped: ${uiState.lastScrapeDate}",
-            actionLabel = scrapeLabel,
-            actionEnabled = scrapeEnabled,
-            actionEmphasizeError = uiState.scrapeState == ScrapeState.FAILED ||
-                uiState.scrapeState == ScrapeState.NEEDS_LOGIN,
-            onAction = { viewModel.scrapeNow() }
+            statusText = stringResource(R.string.targeting_layer2_last_imported, uiState.lastImportedDate)
         )
 
-        // When the scraper returns zero categories from all platforms, almost certainly
-        // the user isn't signed in. Surface a dialog with deep links rather than letting
-        // the failure flash by silently. Dismissal resets state to IDLE.
-        if (uiState.scrapeState == ScrapeState.NEEDS_LOGIN) {
-            ScrapeNeedsLoginDialog(onDismiss = { viewModel.dismissScrapeNeedsLogin() })
+        if (uiState.layer2Enabled) {
+            // 90-day reminder. Muteable (snooze / permanent) so it doesn't nag.
+            if (uiState.showImportReminder) {
+                ImportReminderBanner(
+                    onSnooze = { viewModel.snoozeImportReminder() },
+                    onMute = { viewModel.muteImportReminderPermanently() }
+                )
+            }
+            ImportButtonsCard(
+                uiState = uiState,
+                onImportGoogle = { viewModel.importGoogleTakeout(it) },
+                onImportFacebook = { viewModel.importFacebookDyi(it) },
+                onDismissResult = { viewModel.dismissImportResult() }
+            )
         }
 
         // Layer 3 toggle
         LayerToggleCard(
-            layerName = "Layer 3 — Persona Rotation",
-            description = "Maintains coherent synthetic personas (rotates weekly)",
+            layerName = stringResource(R.string.targeting_layer3_name),
+            description = stringResource(R.string.targeting_layer3_description),
             enabled = uiState.layer3Enabled,
             onToggle = { viewModel.setLayer3Enabled(it) },
-            statusText = uiState.currentPersonaName?.let { "Persona: $it" } ?: "No persona yet",
-            actionLabel = "Rotate Now",
+            statusText = uiState.currentPersonaName?.let { stringResource(R.string.targeting_layer3_status_active, it) }
+                ?: stringResource(R.string.targeting_layer3_status_none),
+            actionLabel = stringResource(R.string.targeting_layer3_action_rotate_now),
             onAction = { viewModel.rotatePersona() }
         )
 
@@ -166,28 +168,23 @@ fun TargetingScreen(
             ),
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Clear My Profile")
+            Text(stringResource(R.string.targeting_clear_profile_button))
         }
     }
 
     if (showClearDialog) {
         AlertDialog(
             onDismissRequest = { showClearDialog = false },
-            title = { Text("Clear Profile?") },
-            text = {
-                Text(
-                    "This will delete your demographic profile, all platform data, and persona history. " +
-                    "The engine will revert to uniform random targeting."
-                )
-            },
+            title = { Text(stringResource(R.string.targeting_clear_dialog_title)) },
+            text = { Text(stringResource(R.string.targeting_clear_dialog_body)) },
             confirmButton = {
                 TextButton(onClick = {
                     viewModel.clearProfile()
                     showClearDialog = false
-                }) { Text("Clear", color = MaterialTheme.colorScheme.error) }
+                }) { Text(stringResource(R.string.targeting_clear_dialog_confirm), color = MaterialTheme.colorScheme.error) }
             },
             dismissButton = {
-                TextButton(onClick = { showClearDialog = false }) { Text("Cancel") }
+                TextButton(onClick = { showClearDialog = false }) { Text(stringResource(R.string.action_cancel)) }
             }
         )
     }
@@ -203,7 +200,7 @@ private fun ProfileSummaryCard(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "MY PROFILE",
+                text = stringResource(R.string.targeting_profile_summary_title),
                 style = MaterialTheme.typography.titleSmall,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold,
@@ -213,7 +210,7 @@ private fun ProfileSummaryCard(
 
             if (!state.hasProfile) {
                 Text(
-                    text = "No profile saved. Setting one up lets Layer 1 steer the noise away from your real demographics.",
+                    text = stringResource(R.string.targeting_profile_summary_empty),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -221,26 +218,28 @@ private fun ProfileSummaryCard(
                 Button(
                     onClick = onEditProfile,
                     modifier = Modifier.fillMaxWidth()
-                ) { Text("Set up profile") }
+                ) { Text(stringResource(R.string.targeting_profile_set_up_button)) }
                 return@Card
             }
 
-            ProfileSummaryRow(label = "Age", value = state.ageRange?.let { stringResource(it.displayNameRes()) })
-            ProfileSummaryRow(label = "Gender", value = state.gender?.let { stringResource(it.displayNameRes()) })
-            ProfileSummaryRow(label = "Profession", value = state.profession?.let { stringResource(it.displayNameRes()) })
-            ProfileSummaryRow(label = "Region", value = state.region?.let { stringResource(it.displayNameRes()) })
+            ProfileSummaryRow(label = stringResource(R.string.targeting_profile_row_age), value = state.ageRange?.let { stringResource(it.displayNameRes()) })
+            ProfileSummaryRow(label = stringResource(R.string.targeting_profile_row_gender), value = state.gender?.let { stringResource(it.displayNameRes()) })
+            ProfileSummaryRow(label = stringResource(R.string.targeting_profile_row_profession), value = state.profession?.let { stringResource(it.displayNameRes()) })
+            ProfileSummaryRow(label = stringResource(R.string.targeting_profile_row_region), value = state.region?.let { stringResource(it.displayNameRes()) })
+            val interestsValue = if (state.interests.isEmpty()) null
+            else state.interests
+                .map { stringResource(it.displayNameRes()) }
+                .joinToString(", ")
             ProfileSummaryRow(
-                label = "Interests",
-                value = if (state.interests.isEmpty()) null
-                else state.interests
-                    .joinToString(", ") { it.name.lowercase().replace('_', ' ') }
+                label = stringResource(R.string.targeting_profile_row_interests),
+                value = interestsValue
             )
 
             Spacer(Modifier.height(12.dp))
             OutlinedButton(
                 onClick = onEditProfile,
                 modifier = Modifier.fillMaxWidth()
-            ) { Text("Edit my profile") }
+            ) { Text(stringResource(R.string.targeting_profile_edit_button)) }
         }
     }
 }
@@ -333,7 +332,7 @@ private fun WeightChart(weights: Map<CategoryPool, Float>) {
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "CATEGORY WEIGHTS",
+                text = stringResource(R.string.targeting_category_weights_title),
                 style = MaterialTheme.typography.labelMedium,
                 fontFamily = FontFamily.Monospace,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -353,7 +352,7 @@ private fun WeightChart(weights: Map<CategoryPool, Float>) {
                         else -> MaterialTheme.colorScheme.secondary                       // Neutral
                     }
                     WeightBar(
-                        label = category.name.lowercase().replace("_", " "),
+                        label = stringResource(category.displayNameRes()),
                         value = weight / maxWeight,
                         color = barColor
                     )
@@ -375,13 +374,13 @@ private fun CustomInterestsCard(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "Custom Interests",
+                text = stringResource(R.string.targeting_custom_interests_title),
                 style = MaterialTheme.typography.titleSmall,
                 fontFamily = FontFamily.Monospace,
                 color = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = "Add specific interests to suppress (mapped to nearest category)",
+                text = stringResource(R.string.targeting_custom_interests_description),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -397,7 +396,7 @@ private fun CustomInterestsCard(
                     value = textFieldValue,
                     onValueChange = { textFieldValue = it },
                     modifier = Modifier.weight(1f),
-                    placeholder = { Text("e.g., woodworking") },
+                    placeholder = { Text(stringResource(R.string.onboarding_custom_interest_placeholder)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                     keyboardActions = KeyboardActions(onDone = {
@@ -413,7 +412,7 @@ private fun CustomInterestsCard(
                         textFieldValue = ""
                     }
                 }) {
-                    Icon(Icons.Default.Add, contentDescription = "Add interest")
+                    Icon(Icons.Default.Add, contentDescription = stringResource(R.string.onboarding_add_interest_cd))
                 }
             }
 
@@ -424,11 +423,11 @@ private fun CustomInterestsCard(
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     mappings.forEachIndexed { index, mapping ->
-                        val categoryLabel = mapping.category?.name?.lowercase()?.replace("_", " ")
+                        val categoryLabel = mapping.category?.let { stringResource(it.displayNameRes()) }
                         val label = if (categoryLabel != null) {
-                            "${mapping.interest} → $categoryLabel"
+                            stringResource(R.string.targeting_custom_interest_mapped, mapping.interest, categoryLabel)
                         } else {
-                            "${mapping.interest} (unmapped)"
+                            stringResource(R.string.targeting_custom_interest_unmapped, mapping.interest)
                         }
                         InputChip(
                             selected = true,
@@ -437,7 +436,7 @@ private fun CustomInterestsCard(
                             trailingIcon = {
                                 Icon(
                                     Icons.Default.Close,
-                                    contentDescription = "Remove",
+                                    contentDescription = stringResource(R.string.onboarding_remove_cd),
                                     modifier = Modifier.size(16.dp)
                                 )
                             }
@@ -481,42 +480,150 @@ private fun WeightBar(label: String, value: Float, color: Color) {
 }
 
 /**
- * Shown after a scrape returns no categories from any platform. The previous version
- * of this dialog told users to "sign in via your browser" — that turned out to be
- * misleading (issue #51): Fauxx's scraper WebView has its own cookie store, isolated
- * from the standalone browser apps the user is logged into. Signing into Google in
- * Brave does not put a Google session into Fauxx.
+ * Two SAF launchers (Google Takeout ZIP/JSON, Facebook DYI ZIP/JSON) plus the live
+ * import progress / last-result feedback. Replaces the v0.2.x "Scrape Now" button.
  *
- * Combined with Google's and Facebook's block on sign-in from embedded WebViews
- * (returns 403 disallowed_useragent), there is currently no clean in-app workflow to
- * establish the scraper session. The dialog now states this honestly instead of
- * directing users into a loop that can't succeed. A redesign of Layer 2 to use
- * user-driven exports / bookmarklets is tracked as a follow-up enhancement.
+ * MIME filter passed to OpenDocument is `{application/zip, application/json}` — most
+ * file pickers honor this; some (especially OEM-skinned ones) ignore the filter and
+ * show all files anyway. We don't reject by MIME on the receiving side because users
+ * sometimes get files with surprising or empty MIME types from share-extracted
+ * downloads — the importer's content-sniffing handles real-world inputs.
  */
 @Composable
-private fun ScrapeNeedsLoginDialog(onDismiss: () -> Unit) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Layer 2 couldn't read your ad profiles") },
-        text = {
+private fun ImportButtonsCard(
+    uiState: TargetingUiState,
+    onImportGoogle: (android.net.Uri) -> Unit,
+    onImportFacebook: (android.net.Uri) -> Unit,
+    onDismissResult: () -> Unit
+) {
+    val mimeFilter = remember { arrayOf("application/zip", "application/json", "*/*") }
+    val googleLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri -> uri?.let(onImportGoogle) }
+    val facebookLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri -> uri?.let(onImportFacebook) }
+
+    Card(
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                "The Adversarial Scraper tries to read what Google and Facebook think " +
-                    "they know about you, then steers the noise away from those interests. " +
-                    "It just got back an empty list, which usually means the scraper has " +
-                    "no signed-in session for those sites.\n\n" +
-                    "Heads-up: Fauxx's scraper has its own browser session, separate from " +
-                    "Chrome/Brave/Firefox where you may already be signed in — Android " +
-                    "doesn't let apps share login cookies with each other. And Google/" +
-                    "Facebook don't allow sign-in from an in-app browser either, so a " +
-                    "'sign in here' button isn't possible.\n\n" +
-                    "Layer 2 is being redesigned to import your ad profile directly " +
-                    "(via Google Takeout or a browser bookmarklet) so it doesn't need a " +
-                    "live session at all. In the meantime, Layers 1 and 3 still work " +
-                    "without any scraping."
+                text = stringResource(R.string.targeting_import_card_title),
+                style = MaterialTheme.typography.titleSmall,
+                fontFamily = FontFamily.Monospace,
+                color = MaterialTheme.colorScheme.primary
             )
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) { Text("Got it") }
+            Text(
+                text = stringResource(R.string.targeting_import_card_body),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.height(12.dp))
+
+            val googleBusy = uiState.importInProgress == ImportSource.GOOGLE_TAKEOUT
+            val facebookBusy = uiState.importInProgress == ImportSource.FACEBOOK_DYI
+            val anyBusy = uiState.importInProgress != null
+
+            OutlinedButton(
+                onClick = { googleLauncher.launch(mimeFilter) },
+                enabled = !anyBusy,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(stringResource(
+                    if (googleBusy) R.string.targeting_import_google_button_busy
+                    else R.string.targeting_import_google_button
+                ))
+            }
+            Spacer(Modifier.height(8.dp))
+            OutlinedButton(
+                onClick = { facebookLauncher.launch(mimeFilter) },
+                enabled = !anyBusy,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(stringResource(
+                    if (facebookBusy) R.string.targeting_import_facebook_button_busy
+                    else R.string.targeting_import_facebook_button
+                ))
+            }
+
+            uiState.lastImportResult?.let { result ->
+                Spacer(Modifier.height(12.dp))
+                ImportResultRow(result = result, onDismiss = onDismissResult)
+            }
         }
-    )
+    }
+}
+
+/**
+ * Per-result feedback row rendered under the import buttons. Colors itself by outcome
+ * (primary tint for success, error tint for failure variants). Stays up for ~4s then
+ * auto-clears via the ViewModel's delay; the X gives the user an immediate dismiss.
+ */
+@Composable
+private fun ImportResultRow(result: ImportResult, onDismiss: () -> Unit) {
+    val (text, isError) = when (result) {
+        is ImportResult.Success -> {
+            val n = result.categoryCount
+            val countLabel = if (n == 1) stringResource(R.string.targeting_import_count_one)
+            else stringResource(R.string.targeting_import_count_many, n)
+            stringResource(R.string.targeting_import_success, countLabel, result.source.displayName) to false
+        }
+        is ImportResult.WrongFormat -> stringResource(result.reasonRes) to true
+        is ImportResult.ParseError ->
+            stringResource(R.string.targeting_import_parse_error, result.source.displayName, result.message) to true
+        is ImportResult.IoError ->
+            stringResource(R.string.targeting_import_io_error) to true
+    }
+    val tint = if (isError) MaterialTheme.colorScheme.error
+    else MaterialTheme.colorScheme.primary
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodySmall,
+            color = tint,
+            modifier = Modifier.weight(1f)
+        )
+        IconButton(onClick = onDismiss) {
+            Icon(
+                Icons.Default.Close,
+                contentDescription = stringResource(R.string.targeting_import_dismiss_cd),
+                modifier = Modifier.size(16.dp),
+                tint = tint
+            )
+        }
+    }
+}
+
+/**
+ * Soft nudge rendered when the most-recent import is > 90 days old. Two dismiss options:
+ *  - **Snooze**: re-shows in 30 days. For users who plan to refresh but not right now.
+ *  - **Mute**: never shows again (until a successful import resets the pref). For users
+ *    who explicitly don't want the reminder.
+ */
+@Composable
+private fun ImportReminderBanner(onSnooze: () -> Unit, onMute: () -> Unit) {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = stringResource(R.string.targeting_import_reminder_body),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSecondaryContainer
+            )
+            Spacer(Modifier.height(8.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
+                TextButton(onClick = onSnooze) { Text(stringResource(R.string.targeting_import_snooze_button)) }
+                Spacer(Modifier.size(4.dp))
+                TextButton(onClick = onMute) { Text(stringResource(R.string.targeting_import_mute_button)) }
+            }
+        }
+    }
 }

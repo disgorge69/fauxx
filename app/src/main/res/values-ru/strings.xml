@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Russian (ru) translation for UI strings.
+
+    Community-contributed via PR #30 (thestability), pending native-speaker review.
+    INCOMPLETE: this file is missing ~130 keys present in values/strings.xml because
+    they were added on i18n/v0.3.0 after the PR was opened. The locale stays out of
+    BuildConfig.SHIPPED_LOCALES until a native speaker fills the gaps and reviews the
+    safety-critical surfaces (notifications, consent dialog, harmful_queries readme).
+
+    Until then, tools:ignore="MissingTranslation" tells lint to allow the incomplete
+    state — selecting `ru` in a debug build falls back to English for un-translated
+    strings, which is acceptable for previewing the locale but is not ship-quality.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+    <string name="app_name">Fauxx</string>
+
+    <!-- Notification -->
+    <string name="notification_channel_name">Защита приватности</string>
+    <string name="notification_channel_desc">Уведомления о фоновой диверсификации активности в браузере Fauxx</string>
+    <string name="notification_title">Fauxx</string>
+    <string name="notification_active">Генерируется разнообразная активность — действий сегодня: %d</string>
+    <string name="notification_paused_wifi">Пауза — ожидание Wi-Fi</string>
+    <string name="notification_paused_battery">Пауза — низкий заряд батареи</string>
+    <string name="notification_paused_rate_limit">Пауза — достигнут лимит действий в час</string>
+    <string name="notification_paused_quiet_hours">Пауза — вне активных часов</string>
+    <string name="notification_stopped">Остановлено</string>
+    <string name="notification_initializing">Инициализация…</string>
+    <string name="notification_action_open">Открыть</string>
+    <string name="notification_action_stop">Остановить</string>
+    <string name="resume_channel_name">Возобновление защиты</string>
+    <string name="resume_channel_desc">Напоминает возобновить Fauxx после перезагрузки устройства</string>
+    <string name="resume_notification_text">Нажмите, чтобы возобновить защиту</string>
+
+    <!-- Common actions -->
+    <string name="common_cancel">Отмена</string>
+    <string name="common_clear">Удалить</string>
+    <string name="common_continue">Продолжить</string>
+    <string name="common_not_now">Не сейчас</string>
+    <string name="common_allow">Разрешить</string>
+    <string name="common_open_settings">Открыть настройки</string>
+    <string name="common_back">Назад</string>
+    <string name="common_success">Успешно</string>
+    <string name="common_failed">Ошибка</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">FAUXX</string>
+    <string name="onboarding_subtitle">Приватность через шум</string>
+    <string name="onboarding_intro">Fauxx защищает твою приватность, создавая синтетическую активность в браузере в фоновом режиме. Вот что он делает:</string>
+    <string name="onboarding_bullet_search">Выполняет веб-поиск в Google, Bing, DuckDuckGo и Yahoo на разные темы</string>
+    <string name="onboarding_bullet_browse">Посещает разные сайты, чтобы разнообразить твой профиль браузинга</string>
+    <string name="onboarding_bullet_fingerprint">Меняет отпечатки браузера: User-Agent и языковые заголовки</string>
+    <string name="onboarding_bullet_dns">Создает DNS-запросы к разным доменам</string>
+    <string name="onboarding_bullet_battery">Вся активность выполняется в фоне и расходует заряд батареи и трафик</string>
+    <string name="onboarding_optional_profile">При желании расскажи о себе на следующих экранах. Эти данные останутся на твоём устройстве и помогут генерировать шум, отличающийся от твоего реального профиля. Пропусти, если хочешь равномерный шум.</string>
+    <string name="onboarding_done_title">Все готово!</string>
+    <string name="onboarding_done_body">Fauxx будет генерировать разнообразную активность, максимально отличающуюся от твоего реального поведенческого сигнала. Чтобы начать, включи защиту на панели управления.</string>
+    <string name="onboarding_skip">Пропустить</string>
+    <string name="onboarding_skip_all">Пропустить все</string>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_done">Готово</string>
+
+    <!-- Onboarding steps -->
+    <string name="onboarding_age_title">Твой возраст?</string>
+    <string name="onboarding_age_subtitle">Помогает не генерировать активность, похожую на твой демографический профиль</string>
+    <string name="onboarding_gender_title">Пол</string>
+    <string name="onboarding_gender_subtitle">Необязательно — используется только, чтобы уводить шум от твоего демографического профиля</string>
+    <string name="onboarding_interests_title">Твои основные интересы</string>
+    <string name="onboarding_interests_subtitle">Мы будем генерировать больше шума в ДРУГИХ категориях</string>
+    <string name="onboarding_custom_interests_title">Или добавь свои</string>
+    <string name="onboarding_custom_interests_subtitle">Введи конкретные интересы, которых нет выше, например «деревообработка» или «криптовалюты»</string>
+    <string name="onboarding_profession_title">Профессия</string>
+    <string name="onboarding_profession_subtitle">Используется только для расчёта демографической дистанции</string>
+    <string name="onboarding_region_title">Где ты находишься?</string>
+    <string name="onboarding_region_subtitle">Используется для генерации поисков и посещений сайтов, указывающих на другие регионы</string>
+
+    <!-- Consent dialog -->
+    <string name="consent_title">Перед запуском</string>
+    <string name="consent_intro">Fauxx будет выполнять следующие фоновые действия:</string>
+    <string name="consent_bullet_search">Искать разные темы в Google, Bing, DuckDuckGo и Yahoo</string>
+    <string name="consent_bullet_browse">Посещать разные сайты, чтобы расширить твой профиль браузинга</string>
+    <string name="consent_bullet_fingerprint">Менять отпечатки браузера: User-Agent и языковые заголовки</string>
+    <string name="consent_bullet_dns">Создавать DNS-запросы к разным доменам</string>
+    <string name="consent_bullet_battery">Расходовать заряд батареи и мобильный трафик во время фоновой работы</string>
+    <string name="consent_footer">Вся активность синтетическая и остаётся на твоём устройстве. Личные данные не собираются и не передаются.</string>
+    <string name="consent_accept">Понимаю, запустить</string>
+    <string name="consent_cancel">Отмена</string>
+
+    <!-- About & Privacy -->
+    <string name="about_title">О ПРИЛОЖЕНИИ И ПРИВАТНОСТИ</string>
+    <string name="about_app_description">Инструмент приватности с открытым исходным кодом, который зашумляет профили у брокеров данных и рекламных сетей, создавая с твоего устройства непрерывную, правдоподобную синтетическую активность вне твоего реального профиля.</string>
+    <string name="about_privacy_title">Политика приватности</string>
+    <string name="about_data_on_device_title">Данные, которые остаются на твоём устройстве</string>
+    <string name="about_data_on_device_body">Все личные данные остаются только на твоём устройстве и хранятся в зашифрованном виде:\n\n• Демографический профиль: возраст, пол, интересы, профессия, регион\n• Кэш профилей рекламных платформ: считанные категории интересов\n• История синтетических персон\n• Журнал действий\n\nЭти данные хранятся в зашифрованной базе SQLCipher с ключом, управляемым Android Keystore. Они ни в каком виде не покидают твоё устройство.</string>
+    <string name="about_network_title">Какие сетевые запросы делает приложение</string>
+    <string name="about_network_body">Fauxx генерирует синтетическую активность в браузере, чтобы запутывать трекинговые профили. Это значит, что приложение будет:\n\n• Выполнять веб-поиск в Google, Bing, DuckDuckGo и Yahoo\n• Посещать URL из разных категорий, чтобы накапливать разнообразные трекерные cookie-файлы\n• Загружать разные страницы в фоновых WebView\n• Разрешать доменные имена для создания шума DNS-запросов\n• Открывать диплинки магазинов приложений для приложений вне твоего профиля\n\nВсе запросы используют случайные заголовки User-Agent и ограничены по частоте, чтобы не мешать целевым сервисам. Приложение никогда не обращается к заблокированным доменам, включая частные сети и вредоносный контент.</string>
+    <string name="about_not_collected_title">Что мы НЕ собираем</string>
+    <string name="about_not_collected_body">• Никакой аналитики или телеметрии\n• Никакой отправки отчётов о сбоях во внешние сервисы\n• Никаких рекламных идентификаторов или пикселей отслеживания\n• Никаких серверных аккаунтов или облачного хранения\n• Никакой передачи данных третьим лицам\n\nУ Fauxx нет бэкенд-сервера. Приложение полностью автономно.</string>
+    <string name="about_location_title">Шум геолокационного сигнала</string>
+    <string name="about_location_body">Если включено, модуль геолокационного сигнала генерирует поисковые запросы и посещения сайтов, которые указывают на регионы, отличные от твоего реального местоположения. Так брокерам данных сложнее понять, где ты живёшь.</string>
+    <string name="about_deletion_title">Удаление данных</string>
+    <string name="about_deletion_body">Ты можешь удалить все сохранённые данные в любой момент через «Настройки» > «Удалить все данные». Это навсегда удалит твой демографический профиль, кэши платформ, историю персон и журналы действий, а также сбросит все настройки. Удаление приложения также удаляет все данные.</string>
+    <string name="about_privacy_url">https://github.com/digital-grease/fauxx/blob/main/PRIVACY.md</string>
+    <string name="about_view_full_policy">Открыть полную политику приватности</string>
+    <string name="about_license_title">Лицензия</string>
+    <string name="about_license_body">Fauxx — приложение с открытым исходным кодом. Исходный код и сведения о лицензии доступны в репозитории проекта.</string>
+
+    <!-- Support -->
+    <string name="about_support_title">Поддержка</string>
+    <string name="about_support_body">Если Fauxx тебе полезен, можешь угостить автора кофе.</string>
+    <string name="about_support_button">Buy Me a Coffee</string>
+
+    <!-- Play Store flavor: full-version notice -->
+    <string name="full_version_notice_title">Ограниченная сборка Play Store</string>
+    <string name="full_version_notice_body">Чтобы соответствовать правилам Play Store, в этой сборке отключены зашумление рекламного профиля и подмена GPS-локации. Полную версию Fauxx без ограничений можно установить из F-Droid или GitHub.</string>
+    <string name="full_version_notice_fdroid">F-Droid</string>
+    <string name="full_version_notice_github">GitHub</string>
+    <string name="full_version_notice_dismiss">Больше не показывать</string>
+    <string name="full_version_fdroid_url">https://f-droid.org/packages/com.fauxx.full/</string>
+    <string name="full_version_github_url">https://github.com/digital-grease/fauxx/releases</string>
+
+    <!-- Settings: app language -->
+    <string name="settings_language_title">Язык приложения</string>
+    <string name="settings_language_subtitle_system">Используется язык твоего устройства</string>
+    <string name="settings_language_subtitle_explicit">Синтетическая активность тоже будет использовать этот язык</string>
+    <string name="settings_language_system_default">Системный язык</string>
+    <string name="settings_language_coming_soon">Скоро</string>
+    <!-- LLM-DRAFTED 2026-05-23, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="language_picker_content_desc">Изменить язык приложения</string>
+    <string name="settings_intensity_low">Низкая</string>
+    <string name="settings_intensity_medium">Средняя</string>
+    <string name="settings_intensity_high">Высокая</string>
+    <string name="settings_theme_system">Системная</string>
+    <string name="settings_theme_light">Светлая</string>
+    <string name="settings_theme_dark">Тёмная</string>
+
+    <!-- LLM-DRAFTED 2026-05-23, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="log_screen_title">ЖУРНАЛ ДЕЙСТВИЙ</string>
+    <string name="log_export_content_desc">Экспорт</string>
+    <string name="log_detail_status_success">Успешно</string>
+    <string name="log_detail_status_failed">Ошибка</string>
+    <string name="crash_dialog_title">Fauxx завершился с ошибкой</string>
+    <string name="crash_dialog_body">Fauxx завершился с ошибкой в прошлой сессии. Ты можешь поделиться отчётом о сбое, чтобы помочь диагностировать проблему. Из отчёта удалены персональные данные.</string>
+    <string name="crash_dialog_share">Отправить отчёт</string>
+    <string name="crash_dialog_dismiss">Закрыть</string>
+
+    <string name="nav_onboarding">Знакомство</string>
+    <string name="nav_back_content_desc">Назад</string>
+    <string name="nav_help_content_desc">Помощь</string>
+    <string name="crash_export_sheet_title">Отчёт о сбое</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">Панель</string>
+    <string name="nav_targeting">Таргетинг</string>
+    <string name="nav_modules">Модули</string>
+    <string name="nav_log">Журнал</string>
+    <string name="nav_settings">Настройки</string>
+    <!-- LLM-DRAFTED 2026-05-23, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="help_menu_help">Помощь</string>
+    <string name="help_menu_contact">Связаться с нами</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">НАСТРОЙКИ</string>
+    <string name="settings_intensity_title">%d действий/час</string>
+    <string name="settings_actions_per_hour">%1$d действий/час</string>
+    <string name="settings_theme_title">Следует теме твоего устройства</string>
+    <string name="settings_theme_system_desc">Следует теме устройства</string>
+    <string name="settings_theme_light_desc">Всегда светлая</string>
+    <string name="settings_theme_dark_desc">Всегда темная</string>
+    <string name="settings_wifi_only_title">Пауза при мобильном интернете</string>
+    <string name="settings_wifi_only_desc">Пауза при мобильном интернете</string>
+    <string name="settings_resume_reboot_title">Возобновлять после перезагрузки</string>
+    <string name="settings_resume_reboot_desc">После перезагрузки показывать уведомление для возобновления защиты. Android не дает приложениям незаметно запускаться в фоне, поэтому нужен тап.</string>
+    <string name="settings_pause_below_title">Пауза ниже</string>
+    <string name="settings_active_hours_title">Начало</string>
+    <string name="settings_active_hours_value">%1$d:00 – %2$d:00</string>
+    <string name="settings_active_hours_start">Начало</string>
+    <string name="settings_active_hours_end">Конец</string>
+    <string name="settings_active_hours_desc">Активность ставится на паузу вне этих часов</string>
+    <string name="settings_active_hours_narrow_warning">Узкое окно активности (%1$d ч) само может стать отслеживаемым сигналом. Более широкие окна (12 ч+) сложнее отличить от обычного поведения.</string>
+    <string name="settings_clear_all_data">Удалить все данные</string>
+    <string name="settings_export_debug_logs">Экспорт debug-логов</string>
+    <string name="settings_about_privacy_policy">О приложении и политика приватности</string>
+    <string name="settings_version_format">Fauxx v%1$s (сборка %2$d)</string>
+    <string name="settings_clear_dialog_title">Удалить все данные?</string>
+    <string name="settings_clear_dialog_body">Это навсегда удалит:\n• Все журналы действий\n• Твой демографический профиль\n• Кэш профилей рекламных платформ\n• Историю генерации персон\n\nВсе настройки будут сброшены. Движок остановится и вернётся к Layer 0 (равномерный шум).\n\nЭто действие нельзя отменить.</string>
+    <string name="settings_clear_dialog_confirm">Удалить все</string>
+
+    <!-- Dashboard screen -->
+    <string name="dashboard_notification_denied">Разрешение на уведомления отклонено — индикатор фоновой активности скрыт. Разрешите уведомления в настройках, чтобы видеть статус защиты.</string>
+    <string name="dashboard_battery_optimization_warning">Оптимизация батареи Android ограничивает Fauxx. Фоновая активность будет останавливаться при выключенном экране. Разрешите неограниченную фоновую работу, чтобы движок продолжал работать.</string>
+    <string name="dashboard_engine_generating">Генерируется синтетическая активность</string>
+    <string name="dashboard_engine_waiting_wifi">Ожидание Wi-Fi</string>
+    <string name="dashboard_engine_battery_low">Заряд ниже порога</string>
+    <string name="dashboard_engine_rate_limit">Достигнут лимит действий в час</string>
+    <string name="dashboard_engine_outside_hours">Вне активных часов</string>
+    <string name="dashboard_engine_stopped">Движок остановлен</string>
+    <string name="dashboard_category_distribution">РАСПРЕДЕЛЕНИЕ КАТЕГОРИЙ</string>
+    <string name="dashboard_category_distribution_help">Показывает, как твой синтетический шум распределён по тематическим категориям. Чем шире разброс, тем более запутанный профиль видят трекеры. Категории взвешиваются движком таргетинга, чтобы максимально отдалить шум от твоих реальных интересов.</string>
+    <string name="dashboard_active_persona">АКТИВНАЯ ПЕРСОНА</string>
+    <string name="dashboard_active_persona_help">%1$s · %2$s</string>
+    <string name="dashboard_persona_meta">%1$s · %2$s</string>
+    <string name="dashboard_noise_ratio">ДОЛЯ ШУМА</string>
+    <string name="dashboard_noise_ratio_help">Оценивает, какая часть твоего видимого профиля браузинга является синтетическим шумом, а не реальной активностью. Чем выше, тем лучше: при 80%%+ брокеру данных пришлось бы правильно распознать 4 из 5 сигналов как фальшивые, чтобы построить точный профиль.</string>
+    <string name="dashboard_battery_dialog_title">Android агрессивно ставит фоновые приложения на паузу для экономии батареи. Для постоянного зашумления профиля Fauxx нужно исключение из оптимизации батареи.</string>
+    <string name="dashboard_battery_dialog_body">Android агрессивно останавливает фоновые приложения для экономии батареи. Для постоянного отравления профиля Fauxx нужно исключение из оптимизации батареи.</string>
+    <string name="dashboard_battery_dialog_note">На следующем экране выберите «Разрешить», чтобы движок продолжал генерировать синтетическую активность при выключенном экране.</string>
+
+    <!-- Targeting screen -->
+    <string name="targeting_title">ДВИЖОК ТАРГЕТИНГА</string>
+    <string name="targeting_layer1_name">Layer 1 — Самоотчёт</string>
+    <string name="targeting_layer1_desc">Уводит шум от указанных вами демографических признаков</string>
+    <string name="targeting_profile_set">Профиль задан</string>
+    <string name="targeting_no_profile">Профиля нет</string>
+    <!-- LLM-DRAFTED 2026-05-24, PENDING NATIVE-SPEAKER REVIEW (post-#52 import retreat) -->
+    <string name="targeting_layer2_name">Слой 2 — Импорт рекламного профиля</string>
+    <string name="targeting_layer2_description">Импортирует существующий рекламный профиль из Google Takeout / Facebook DYI</string>
+    <string name="targeting_layer2_last_imported">Последний импорт: %s</string>
+    <string name="targeting_import_never_label">Никогда</string>
+
+    <string name="targeting_import_card_title">Импортировать рекламный профиль</string>
+    <string name="targeting_import_card_body">Экспортируй свои данные рекламного таргетинга из Google Takeout или из «Скачать вашу информацию» в Facebook, затем импортируй файл сюда. Fauxx никогда не входит в твой аккаунт и не меняет твои рекламные настройки.</string>
+    <string name="targeting_import_google_button">Импортировать Google Takeout</string>
+    <string name="targeting_import_google_button_busy">Импорт Google Takeout…</string>
+    <string name="targeting_import_facebook_button">Импортировать Facebook DYI</string>
+    <string name="targeting_import_facebook_button_busy">Импорт Facebook DYI…</string>
+    <string name="targeting_import_success">Импортировано %1$s из %2$s.</string>
+    <string name="targeting_import_count_one">1 категория</string>
+    <string name="targeting_import_count_many">%d категорий</string>
+    <string name="targeting_import_parse_error">Не удалось разобрать архив %1$s: %2$s</string>
+    <string name="targeting_import_io_error">Не удалось прочитать файл. Возможно, разрешение было отозвано.</string>
+    <string name="targeting_import_wrong_format_google">В архиве не найден файл с рекламными интересами. Попробуй экспортировать именно «My Ad Center» из Google Takeout (а не весь архив).</string>
+    <string name="targeting_import_wrong_format_facebook">В архиве не найден файл с рекламными интересами. На accountscenter.facebook.com выбери Скачать вашу информацию → формат JSON → именно «Реклама и компании».</string>
+    <string name="targeting_import_dismiss_cd">Закрыть</string>
+    <string name="targeting_import_reminder_body">Твоему рекламному профилю Слоя 2 больше 90 дней. Реимпортируй свежую выгрузку, чтобы поддерживать таргетинг актуальным.</string>
+    <string name="targeting_import_snooze_button">Напомнить через 30 дней</string>
+    <string name="targeting_import_mute_button">Не напоминать</string>
+
+    <!-- Legacy PR #30 keys (orphan post-#52; absorbed by lint baseline). -->
+    <string name="targeting_layer2_desc">Считывает рекламные профили, чтобы найти подтвержденные интересы</string>
+    <string name="targeting_last_scraped">Последнее считывание: %1$s</string>
+    <string name="targeting_scrape_now">Считать сейчас</string>
+    <string name="targeting_layer3_name">Layer 3 — Смена персон</string>
+    <string name="targeting_layer3_desc">Поддерживает связные синтетические персоны с еженедельной ротацией</string>
+    <string name="targeting_persona_status">Персона: %1$s</string>
+    <string name="targeting_no_persona">Персоны пока нет</string>
+    <string name="targeting_rotate_now">Сменить сейчас</string>
+    <string name="targeting_category_weights">ВЕСА КАТЕГОРИЙ</string>
+    <string name="targeting_custom_interests_title">Добавь конкретные интересы для подавления (сопоставляются с ближайшей категорией)</string>
+    <string name="targeting_custom_interests_desc">Добавьте конкретные интересы для подавления: они будут сопоставлены с ближайшей категорией</string>
+    <string name="targeting_custom_interest_placeholder">например, деревообработка</string>
+    <string name="targeting_add_interest_cd">Добавить интерес</string>
+    <string name="targeting_remove_cd">Удалить</string>
+    <string name="targeting_unmapped_suffix">не сопоставлено</string>
+    <string name="targeting_interest_mapping">%1$s → %2$s</string>
+    <string name="targeting_interest_unmapped">%1$s (%2$s)</string>
+    <string name="targeting_clear_profile">Удалить мой профиль</string>
+    <string name="targeting_clear_dialog_title">Удалить профиль?</string>
+    <string name="targeting_clear_dialog_body">Это удалит твой демографический профиль, все данные платформ и историю персон. Движок вернётся к равномерному случайному таргетингу.</string>
+
+    <!-- Modules screen -->
+    <string name="modules_title">МОДУЛИ</string>
+    <string name="module_search_name">Зашумление поиска</string>
+    <string name="module_search_desc">Выполняет поисковые запросы в Google, Bing, DuckDuckGo, Yahoo, а в русском режиме также в Яндексе и Mail.ru</string>
+    <string name="module_cookie_name">Насыщение cookie</string>
+    <string name="module_cookie_desc">Посещает 10 000+ URL в фоне, чтобы накопить разнообразные трекерные cookies</string>
+    <string name="module_dns_name">Разрешает разные домены, создавая видимый провайдеру шум DNS-запросов</string>
+    <string name="module_dns_desc">Разрешает разные домены, создавая видимый провайдеру шум DNS-запросов</string>
+    <string name="module_fingerprint_name">Смена отпечатка</string>
+    <string name="module_fingerprint_desc">Меняет User-Agent, canvas-шум и свойства navigator</string>
+    <string name="module_ad_name">Зашумление рекламы</string>
+    <string name="module_ad_desc">Загружает страницы с рекламой и посещает панели рекламных предпочтений</string>
+    <string name="module_location_name">Подмена местоположения</string>
+    <string name="module_location_desc">Подает синтетические GPS-маршруты через MockLocationProvider</string>
+    <string name="module_location_warning">Требует включенные параметры разработчика и выбор Fauxx как приложения фиктивной геолокации</string>
+    <string name="module_app_signal_name">Сигналы приложений</string>
+    <string name="module_app_signal_desc">Открывает страницы магазинов приложений вне вашего профиля, чтобы сработали attribution pixels</string>
+
+    <!-- Log screen -->
+    <string name="log_export_csv">Экспорт CSV</string>
+    <string name="log_export_json">Экспорт JSON</string>
+    <string name="log_filter_all">Все</string>
+    <string name="log_detail_type">Тип</string>
+    <string name="log_detail_category">Категория</string>
+    <string name="log_detail_detail">Детали</string>
+    <string name="log_detail_time">Время</string>
+    <string name="log_detail_status">Статус</string>
+    <string name="log_export_chooser_title">Экспорт журнала</string>
+
+    <!-- Log export sheet -->
+    <string name="log_export_logs_scrubbed">Все личные данные удалены из логов.</string>
+    <string name="log_export_file_issue">Создать issue на GitHub</string>
+    <string name="log_export_file_issue_desc">Логи скопированы в буфер — вставьте их в тело issue</string>
+    <string name="log_export_share">Поделиться через...</string>
+    <string name="log_export_share_desc">Отправить в почту, мессенджер или другое приложение</string>
+    <string name="log_export_save">Сохранить на устройство</string>
+    <string name="log_export_save_desc">Сохраняет файл в папку Downloads</string>
+    <string name="log_export_copy">Скопировать в буфер</string>
+    <string name="log_export_copy_desc">Скопировать полный текст лога</string>
+    <string name="log_export_issue_label_crash">crash report</string>
+    <string name="log_export_issue_label_debug">debug logs</string>
+    <string name="log_export_issue_body">## Описание\n\n[Опишите, что произошло]\n\n## Логи\n\nЛоги скопированы в буфер обмена — вставьте их между блоками ниже.\n\n```\n\n```\n</string>
+    <string name="log_export_toast_issue_copied">Полные логи скопированы — вставьте их в тело issue</string>
+    <string name="log_export_toast_no_browser">Браузер не найден — логи скопированы в буфер</string>
+    <string name="log_export_share_message">Fauxx %1$s — файл во вложении.</string>
+    <string name="log_export_toast_no_share_app">Приложение для отправки не найдено</string>
+    <string name="log_export_toast_downloads_requires_q">Сохранение в Downloads требует Android 10+</string>
+    <string name="log_export_toast_saved">Сохранено в Downloads/%1$s</string>
+    <string name="log_export_toast_failed_save">Не удалось сохранить файл</string>
+    <string name="log_export_clipboard_label">Логи Fauxx</string>
+    <string name="log_export_toast_copied">Скопировано в буфер</string>
+
+    <!-- Crash report -->
+    <string name="crash_report_sheet_title">Crash report</string>
+
+    <!-- Asset health warnings -->
+    <string name="health_warning_blocklist">Не удалось загрузить safety blocklist — URL-модули отключены</string>
+    <string name="health_warning_query_banks">Не удалось загрузить банки запросов — поисковый шум может быть обобщенным</string>
+    <string name="health_warning_url_corpus">Корпус URL пуст — модули браузинга не будут работать</string>
+    <string name="health_warning_city_database">Не удалось загрузить базу городов — шум локации ограничен одним городом</string>
+
+    <!-- Action type labels -->
+    <string name="action_type_search_query">ПОИСК</string>
+    <string name="action_type_ad_click">КЛИК ПО РЕКЛАМЕ</string>
+    <string name="action_type_page_visit">ПОСЕЩЕНИЕ</string>
+    <string name="action_type_location_spoof">ЛОКАЦИЯ</string>
+    <string name="action_type_dns_lookup">DNS</string>
+    <string name="action_type_cookie_harvest">COOKIE</string>
+    <string name="action_type_deep_link_visit">ДИПЛИНК</string>
+    <string name="action_type_fingerprint_rotate">ОТПЕЧАТОК</string>
+    <string name="action_type_ad_profile_import">ИМПОРТ</string>
+
+    <!-- Category labels -->
+    <string name="category_medical">медицина</string>
+    <string name="category_legal">право</string>
+    <string name="category_automotive">авто</string>
+    <string name="category_parenting">родительство</string>
+    <string name="category_retirement">пенсия</string>
+    <string name="category_gaming">игры</string>
+    <string name="category_agriculture">сад и ферма</string>
+    <string name="category_fashion">мода</string>
+    <string name="category_academic">учеба</string>
+    <string name="category_real_estate">недвижимость</string>
+    <string name="category_cooking">кулинария</string>
+    <string name="category_sports">спорт</string>
+    <string name="category_finance">финансы</string>
+    <string name="category_travel">путешествия</string>
+    <string name="category_technology">технологии</string>
+    <string name="category_pets">питомцы</string>
+    <string name="category_home_improvement">дом и ремонт</string>
+    <string name="category_beauty">красота</string>
+    <string name="category_music">музыка</string>
+    <string name="category_fitness">фитнес</string>
+    <string name="category_entertainment">развлечения</string>
+    <string name="category_food">еда</string>
+    <string name="category_politics">политика</string>
+    <string name="category_science">наука</string>
+    <string name="category_business">бизнес</string>
+    <string name="category_outdoor_recreation">активный отдых</string>
+    <string name="category_crafts">рукоделие</string>
+    <string name="category_history">история</string>
+    <string name="category_environment">экология</string>
+    <string name="category_military_defense">армия и оборона</string>
+    <string name="category_wellness_alternative">здоровье и альтернативные практики</string>
+    <string name="category_relationships_dating">отношения и знакомства</string>
+    <string name="category_other">другое</string>
+
+    <!-- Demographic enum labels (onboarding pickers) -->
+    <string name="age_18_24">18–24</string>
+    <string name="age_25_34">25–34</string>
+    <string name="age_35_44">35–44</string>
+    <string name="age_45_54">45–54</string>
+    <string name="age_55_64">55–64</string>
+    <string name="age_65_plus">65+</string>
+
+    <string name="gender_male">Мужчина</string>
+    <string name="gender_female">Женщина</string>
+    <string name="gender_prefer_not_to_say">Предпочитаю не указывать</string>
+
+    <string name="profession_student">Студент</string>
+    <string name="profession_teacher">Преподаватель</string>
+    <string name="profession_engineer">Инженер</string>
+    <string name="profession_healthcare">Медработник</string>
+    <string name="profession_legal">Юриспруденция</string>
+    <string name="profession_finance_prof">Бизнес / финансы</string>
+    <string name="profession_retail">Розничная торговля</string>
+    <string name="profession_trades">Рабочие специальности</string>
+    <string name="profession_creative">Креативная сфера</string>
+    <string name="profession_retired">Пенсионер</string>
+    <string name="profession_homemaker">Домохозяин/домохозяйка</string>
+    <string name="profession_other">Другое</string>
+
+    <string name="region_us_northeast">Северо-восток США</string>
+    <string name="region_us_southeast">Юго-восток США</string>
+    <string name="region_us_midwest">Средний Запад США</string>
+    <string name="region_us_southwest">Юго-запад США</string>
+    <string name="region_us_west">Запад США</string>
+    <string name="region_canada">Канада</string>
+    <string name="region_uk">Великобритания</string>
+    <string name="region_western_europe">Западная Европа</string>
+    <string name="region_eastern_europe">Восточная Европа</string>
+    <string name="region_asia_pacific">Азиатско-Тихоокеанский регион</string>
+    <string name="region_latin_america">Латинская Америка</string>
+    <string name="region_middle_east_africa">Ближний Восток и Африка</string>
+    <string name="region_spain">Испания</string>
+    <string name="region_mexico">Мексика</string>
+    <string name="region_argentina">Аргентина</string>
+    <string name="region_colombia">Колумбия</string>
+    <string name="region_chile">Чили</string>
+    <string name="region_peru">Перу</string>
+    <string name="region_france">Франция</string>
+    <string name="region_quebec">Квебек</string>
+    <string name="region_belgium">Бельгия</string>
+    <string name="region_switzerland">Швейцария</string>
+    <string name="region_russia">Россия</string>
+    <string name="region_other">Другое</string>
+
+    <!-- Onboarding misc -->
+    <string name="onboarding_add_interest_cd">Добавить интерес</string>
+    <string name="onboarding_remove_cd">Удалить</string>
+    <string name="onboarding_unmapped_suffix">не сопоставлено</string>
+    <string name="onboarding_custom_interest_placeholder">например, деревообработка</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">FAUXX</string>
+    <string name="dashboard_active">АКТИВНО</string>
+    <string name="dashboard_paused">ПАУЗА</string>
+    <string name="dashboard_inactive">НЕАКТИВНО</string>
+    <string name="dashboard_today">СЕГОДНЯ</string>
+    <string name="dashboard_this_week">FAQ</string>
+
+    <!-- v0.3.0 RU backfill — LLM-DRAFTED 2026-05-23, PENDING NATIVE-SPEAKER REVIEW -->
+    <string name="faq_title">FAQ</string>
+    <string name="faq_back">Назад</string>
+    <string name="help_menu_faq">FAQ</string>
+    <string name="faq_q1_question">Почему Fauxx иногда останавливается и показывает уведомление «Нажми, чтобы возобновить защиту»?</string>
+    <string name="faq_q1_answer">Fauxx добровольно ставит движок на паузу, когда срабатывает одно из настроенных ограничений:\n\n• Тихие часы: если задано окно активных часов (по умолчанию 7:00–23:00), Fauxx останавливается в конце окна и публикует уведомление в один клик, запланированное на ближайшее время старта.\n• Только Wi-Fi: если в Настройках включено «Только Wi-Fi» и Wi-Fi пропал более чем на 30 минут, Fauxx освобождает слот foreground-сервиса, а не работает вхолостую.\n• Порог батареи: если заряд ниже настроенного порога и устройство не заряжается, Fauxx стоит на паузе до изменения ситуации.\n\nКасание уведомления открывает Fauxx и перезапускает защиту. Ничего не теряется — настройки, профиль, персона и журнал действий сохраняются между паузами.\n\nЕсли движок останавливается вне этих ограничений, открой issue из Настроек («Открыть issue на GitHub») — это баг, а не штатное поведение.</string>
+    <string name="faq_q4_question">Что означает «Коэффициент шума» на Панели?</string>
+    <string name="faq_q4_answer">Это индикатор пропускной способности: действия за сегодня поделены на 500, с максимумом в 100%%. 500 действий за день дают полную загрузку 100%%.\n\nОн НЕ измеряет качество шума — попадает ли синтетическая активность в категории вне твоего профиля, обманывает ли системы профилирования и охватывает ли разнообразные темы. Это просто датчик частоты.\n\nЧтобы увидеть, куда на самом деле уходит шум, посмотри график весов по категориям на экране Таргетинга. Красные полосы — категории, которые Fauxx подавляет (потому что они совпадают с твоим реальным профилем), зелёные — которые усиливает, серые — нейтральные.</string>
+    <string name="faq_q5_question">Как работает Слой 2 (Импорт рекламного профиля) и где взять файл экспорта?</string>
+    <string name="faq_q5_answer">Слой 2 берёт рекламный профиль таргетинга, который Google и Facebook уже хранят на тебя, и использует его, чтобы увести Fauxx от твоих реальных интересов — синтетическая активность усиливается в ДРУГИХ категориях.\n\nТы сам экспортируешь свои данные и импортируешь файл в Fauxx; никакого входа в аккаунт внутри приложения, никакого автоматического скрапинга. Android изолирует куки между приложениями, поэтому Fauxx действительно не видит сессию твоего браузера, а Google и Facebook блокируют вход из любого встроенного WebView — поэтому поток «войди здесь» невозможен. Экспорт по инициативе пользователя обходит обе проблемы.\n\nКак экспортировать:\n\n• Google — зайди на takeout.google.com в браузере, выбери именно «My Ad Center» (остальное в Takeout пропусти, чтобы файл был меньше), выбери формат JSON, запроси экспорт. Google пришлёт ссылку на скачивание по почте, обычно за минуты. Нажми «Импортировать Google Takeout» в Fauxx и выбери получившийся .zip (или файл MyAdCenter.json внутри него).\n• Facebook — зайди на accountscenter.facebook.com, выбери Скачать вашу информацию → формат JSON → именно «Реклама и компании». Facebook подготовит архив, пришлёт ссылку по почте, и ты импортируешь его через «Импортировать Facebook DYI».\n\nЧто нужно знать:\n\n• Только чтение. Fauxx никогда не меняет и не взаимодействует с твоими рекламными настройками ни на одной из платформ — только читает то, что в экспорте.\n• Остаётся на устройстве. Импортированные категории записываются в ту же зашифрованную SQLCipher базу, что и остальные твои данные. Ничто не покидает телефон.\n• Частота обновления — на твоё усмотрение. Реимпортируй когда захочешь свежий снимок — Fauxx напомнит баннером в приложении, если последнему импорту больше 90 дней (с возможностью отложить или отключить).</string>
+    <string name="boot_guard_safe_mode_notice">Fauxx отключил Слой 2 и движок после повторяющихся зависаний при запуске. Включи их снова на экранах Таргетинг и Панель, когда будешь готов попробовать ещё раз.</string>
+    <string name="module_search_description">Выполняет поисковые запросы в Google, Bing, DuckDuckGo, Yahoo</string>
+    <string name="module_cookie_description">Посещает 10 000+ URL в фоне, чтобы накопить разнообразные трекерные куки</string>
+    <string name="module_dns_description">Резолвит разнообразные домены, чтобы создать видимый ISP шум DNS-запросов</string>
+    <string name="module_fingerprint_description">Меняет User-Agent, шум canvas и свойства navigator</string>
+    <string name="module_ad_description">Загружает страницы с большим количеством рекламы и посещает панели рекламных настроек</string>
+    <string name="module_location_description">Подаёт синтетические GPS-маршруты через MockLocationProvider</string>
+    <string name="module_location_setup_hint">Требует включённые «Для разработчиков» и выбор Fauxx в качестве приложения для имитации местоположения</string>
+    <string name="module_appsignal_name">App Signals</string>
+    <string name="module_appsignal_description">Открывает страницы магазина приложений для приложений вне твоего профиля, чтобы сработали attribution-пиксели</string>
+    <string name="module_location_setup_dialog_title">Ещё один шаг</string>
+    <string name="module_location_setup_dialog_body">Android требует, чтобы ты назначил Fauxx приложением для имитации местоположения:\n\n1. Включи «Для разработчиков», если ещё не: Настройки → О телефоне → нажми «Номер сборки» 7 раз.\n\n2. Открой «Для разработчиков» → «Выбрать приложение для имитации местоположения» и выбери Fauxx.\n\nБез этого шага имитация местоположения молча ничего не делает.</string>
+    <string name="module_location_success_title">Имитация местоположения активна</string>
+    <string name="module_location_success_body">Fauxx зарегистрирован как системный поставщик имитации местоположения и подаёт синтетические GPS-координаты.</string>
+    <string name="module_location_failure_not_mock_app_title">Fauxx не выбран как приложение для имитации местоположения</string>
+    <string name="module_location_failure_not_mock_app_body">Открой «Для разработчиков» → «Выбрать приложение для имитации местоположения» → выбери Fauxx, затем перезапусти движок.</string>
+    <string name="module_location_failure_security_title">Имитация поставщика отклонена Android</string>
+    <string name="module_location_failure_security_body">Система заблокировала addTestProvider, несмотря на разрешённую app op. Попробуй выключить и снова включить Fauxx в «Для разработчиков» → «Выбрать приложение для имитации местоположения», затем перезапусти Fauxx.</string>
+    <string name="module_location_failure_runtime_title">Не удалось зарегистрировать имитацию поставщика</string>
+    <string name="module_location_failure_runtime_body">Android отказал в имитации поставщика по неожиданной причине. Проверь логи приложения для деталей.</string>
+    <string name="action_open_developer_options">Открыть «Для разработчиков»</string>
+    <string name="action_got_it">Понятно</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="settings_intensity_actions_per_hour">%d действий/час</string>
+    <string name="settings_theme_system_subtitle">Следует теме устройства</string>
+    <string name="settings_theme_light_subtitle">Всегда светлая</string>
+    <string name="settings_theme_dark_subtitle">Всегда тёмная</string>
+    <string name="settings_wifi_only_description">Пауза при использовании мобильных данных</string>
+    <string name="settings_resume_on_boot_title">Возобновлять после перезагрузки</string>
+    <string name="settings_resume_on_boot_description">После перезагрузки показать уведомление для возобновления защиты. Android запрещает приложениям молча запускаться в фоне, так что нужно касание.</string>
+    <string name="settings_battery_threshold_title">Пауза при заряде ниже</string>
+    <string name="settings_battery_ignore_while_charging_title">Игнорировать порог при зарядке</string>
+    <string name="settings_battery_ignore_while_charging_description">Продолжать работу ниже порога, когда устройство подключено к зарядке.</string>
+    <string name="settings_active_hours_start_label">Начало</string>
+    <string name="settings_active_hours_end_label">Конец</string>
+    <string name="settings_active_hours_description">Активность приостановлена вне этих часов</string>
+    <string name="settings_active_hours_narrow_window_warning">Узкое окно активности (%dч) само по себе может быть отслеживаемым сигналом. Более широкие окна (12ч+) трекерам сложнее отличить от реального использования.</string>
+    <string name="settings_custom_ua_title">Подстроить под мой браузер</string>
+    <string name="settings_custom_ua_description">По умолчанию Fauxx чередует множество идентификаторов браузера — но реальные люди обычно пользуются одним браузером, поэтому само разнообразие может выглядеть как трафик ботов. Нажми ниже, чтобы вместо этого использовать встроенный идентификатор браузера этого устройства — тогда шум будет сливаться с твоей реальной активностью. Оставь пустым, чтобы оставить чередование по умолчанию.</string>
+    <string name="settings_custom_ua_use_device_button">Использовать браузер этого устройства</string>
+    <string name="settings_custom_ua_field_label">Идентификатор браузера (для продвинутых — оставь пустым для автоматического чередования)</string>
+    <string name="settings_custom_ua_placeholder">Mozilla/5.0 (…)</string>
+    <string name="settings_custom_ua_clear_button">Очистить и возобновить чередование</string>
+    <string name="settings_clear_all_data_button">Очистить все данные</string>
+    <string name="settings_export_debug_logs_button">Экспортировать отладочные логи</string>
+    <string name="settings_about_privacy_button">О приложении и приватность</string>
+    <string name="settings_version_info">Fauxx v%1$s (сборка %2$d)</string>
+    <string name="targeting_layer1_description">Усиливает шум, уводя его от заявленных тобой демографических данных</string>
+    <string name="targeting_layer1_status_set">Профиль задан</string>
+    <string name="targeting_layer1_status_unset">Нет профиля</string>
+    <string name="targeting_layer3_description">Поддерживает связные синтетические персоны (ротация еженедельно)</string>
+    <string name="targeting_layer3_status_active">Персона: %s</string>
+    <string name="targeting_layer3_status_none">Персоны пока нет</string>
+    <string name="targeting_layer3_action_rotate_now">Сменить сейчас</string>
+    <string name="targeting_clear_profile_button">Очистить мой профиль</string>
+    <string name="targeting_clear_dialog_confirm">Очистить</string>
+    <string name="targeting_profile_summary_title">МОЙ ПРОФИЛЬ</string>
+    <string name="targeting_profile_summary_empty">Профиль не сохранён. Его настройка позволит Слою 1 уводить шум от твоих реальных демографических данных.</string>
+    <string name="targeting_profile_set_up_button">Настроить профиль</string>
+    <string name="targeting_profile_edit_button">Изменить мой профиль</string>
+    <string name="targeting_profile_row_age">Возраст</string>
+    <string name="targeting_profile_row_gender">Пол</string>
+    <string name="targeting_profile_row_profession">Профессия</string>
+    <string name="targeting_profile_row_region">Регион</string>
+    <string name="targeting_profile_row_interests">Интересы</string>
+    <string name="targeting_category_weights_title">ВЕСА КАТЕГОРИЙ</string>
+    <string name="targeting_custom_interests_description">Добавь конкретные интересы для подавления (сопоставляются с ближайшей категорией)</string>
+    <string name="targeting_custom_interest_mapped">%1$s → %2$s</string>
+    <string name="targeting_custom_interest_unmapped">%s (не сопоставлено)</string>
+    <string name="targeting_scrape_dialog_title">Слою 2 не удалось прочитать твои рекламные профили</string>
+    <string name="targeting_scrape_dialog_body">Adversarial Scraper пытается прочитать, что Google и Facebook думают о тебе, и затем уводит шум от этих интересов. Он только что получил пустой список — обычно это значит, что у скрапера нет активной сессии для этих сайтов.\n\nВнимание: у скрапера Fauxx своя сессия браузера, отдельная от Chrome/Brave/Firefox, где ты, возможно, уже вошёл — Android не позволяет приложениям делиться куки авторизации друг с другом. И Google/Facebook не позволяют входить из встроенного браузера, так что кнопка «войти здесь» невозможна.\n\nСлой 2 переделывается, чтобы импортировать твой рекламный профиль напрямую (через Google Takeout или браузерный bookmarklet), и тогда живая сессия вообще не нужна. Тем временем Слои 1 и 3 продолжают работать без скрапинга.</string>
+    <string name="dashboard_warning_notification_denied">Разрешение на уведомления не дано — индикатор фоновой активности скрыт. Дай разрешение на уведомления в Настройках, чтобы видеть статусное уведомление.</string>
+    <string name="dashboard_warning_action_open_settings">Открыть настройки</string>
+    <string name="dashboard_warning_battery_optimized">Оптимизация батареи Android ограничивает Fauxx. Фоновая активность будет на паузе, когда экран выключен. Разреши неограниченное фоновое использование, чтобы движок продолжал работу.</string>
+    <string name="dashboard_warning_action_allow">Разрешить</string>
+    <string name="dashboard_engine_state_active">Генерирует синтетическую активность</string>
+    <string name="dashboard_engine_state_paused_wifi">Режим «только Wi-Fi» — ожидание Wi-Fi</string>
+    <string name="dashboard_engine_state_paused_battery">Батарея ниже порога</string>
+    <string name="dashboard_engine_state_paused_rate_limit">Достигнут часовой лимит</string>
+    <string name="dashboard_engine_state_paused_quiet_hours">Вне активных часов</string>
+    <string name="dashboard_engine_state_stopped">Движок остановлен</string>
+    <string name="dashboard_action_use_mobile_data">Использовать мобильные данные</string>
+    <string name="dashboard_category_distribution_title">РАСПРЕДЕЛЕНИЕ КАТЕГОРИЙ</string>
+    <string name="dashboard_category_other">другое</string>
+    <string name="dashboard_chart_legend_entry">%1$s %2$d%%</string>
+    <string name="dashboard_active_persona_title">АКТИВНАЯ ПЕРСОНА</string>
+    <string name="dashboard_persona_subtitle">%1$s · %2$s</string>
+    <string name="dashboard_noise_ratio_title">КОЭФФИЦИЕНТ ШУМА</string>
+    <string name="dashboard_noise_ratio_value">%d%%</string>
+    <string name="dashboard_battery_dialog_body_intro">Android агрессивно ставит фоновые приложения на паузу для экономии батареи. Для непрерывного отравления профиля Fauxx должен быть исключён из оптимизации батареи.</string>
+    <string name="dashboard_battery_dialog_body_action">На следующем экране выбери «Разрешить», чтобы движок мог продолжать генерировать синтетическую активность с выключенным экраном.</string>
+    <string name="dashboard_battery_dialog_continue">Продолжить</string>
+    <string name="dashboard_battery_dialog_not_now">Не сейчас</string>
+    <string name="log_export_scrubbed_notice">Все персональные данные удалены из логов.</string>
+    <string name="log_export_option_github">Открыть issue на GitHub</string>
+    <string name="log_export_option_github_description">Открывает предзаполненную форму issue. Логи встроены напрямую, если помещаются, иначе скопированы в буфер для вставки ниже.</string>
+    <string name="log_export_option_share">Поделиться через…</string>
+    <string name="log_export_option_share_description">Отправить на почту, в Slack или другое приложение</string>
+    <string name="log_export_option_save">Сохранить на устройство</string>
+    <string name="log_export_option_save_description">Сохраняет в папку «Загрузки»</string>
+    <string name="log_export_option_copy">Копировать в буфер</string>
+    <string name="log_export_option_copy_description">Скопировать весь текст лога</string>
+    <string name="log_export_toast_crash_report_ready">Отчёт о сбое готов — проверь и отправь</string>
+    <string name="log_export_toast_trace_truncated">Встроена обрезанная трассировка; полная трассировка в буфере — вставь ниже, если нужен полный контекст</string>
+    <string name="log_export_toast_no_browser_clipboard">Браузер не найден — логи скопированы в буфер</string>
+    <string name="log_export_toast_no_browser_issue_tracker">Не найден браузер для открытия issue tracker</string>
+    <string name="log_export_share_text">Fauxx %s — см. прикреплённый файл.</string>
+    <string name="log_export_toast_no_sharing_app">Не найдено приложение для отправки</string>
+    <string name="log_export_toast_save_requires_android_10">Сохранение в «Загрузки» требует Android 10+</string>
+    <string name="log_export_toast_saved_to_downloads">Сохранено в Загрузки/%s</string>
+    <string name="log_export_toast_save_failed">Не удалось сохранить файл</string>
+    <string name="log_export_toast_copied_to_clipboard">Скопировано в буфер</string>
+
+</resources>

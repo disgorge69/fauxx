@@ -10,6 +10,7 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.ui.res.stringResource
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.runtime.LaunchedEffect
@@ -171,7 +172,7 @@ class MainActivity : ComponentActivity() {
 
                 if (showCrashExportSheet) {
                     LogExportSheet(
-                        title = "Crash Report",
+                        title = stringResource(R.string.crash_export_sheet_title),
                         content = crashReportContent,
                         fileName = "fauxx_crash_report.txt",
                         onDismiss = { showCrashExportSheet = false }

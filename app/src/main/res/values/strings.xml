@@ -97,6 +97,88 @@
     <string name="settings_language_subtitle_explicit">Synthetic activity will also use this language</string>
     <string name="settings_language_system_default">System default</string>
     <string name="settings_language_coming_soon">Coming soon</string>
+    <string name="language_picker_content_desc">Change app language</string>
+    <string name="settings_intensity_low">Low</string>
+    <string name="settings_intensity_medium">Medium</string>
+    <string name="settings_intensity_high">High</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+
+    <!-- Content category labels — shown on Onboarding chips, Dashboard distribution, Targeting weights -->
+    <string name="category_medical">Medical</string>
+    <string name="category_legal">Legal</string>
+    <string name="category_automotive">Automotive</string>
+    <string name="category_parenting">Parenting</string>
+    <string name="category_retirement">Retirement</string>
+    <string name="category_gaming">Gaming</string>
+    <string name="category_agriculture">Agriculture</string>
+    <string name="category_fashion">Fashion</string>
+    <string name="category_academic">Academic</string>
+    <string name="category_real_estate">Real estate</string>
+    <string name="category_cooking">Cooking</string>
+    <string name="category_sports">Sports</string>
+    <string name="category_finance">Finance</string>
+    <string name="category_travel">Travel</string>
+    <string name="category_technology">Technology</string>
+    <string name="category_pets">Pets</string>
+    <string name="category_home_improvement">Home improvement</string>
+    <string name="category_beauty">Beauty</string>
+    <string name="category_music">Music</string>
+    <string name="category_fitness">Fitness</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_food">Food</string>
+    <string name="category_politics">Politics</string>
+    <string name="category_science">Science</string>
+    <string name="category_business">Business</string>
+    <string name="category_outdoor_recreation">Outdoor recreation</string>
+    <string name="category_crafts">Crafts</string>
+    <string name="category_history">History</string>
+    <string name="category_environment">Environment</string>
+    <string name="category_military_defense">Military &amp; defense</string>
+    <string name="category_wellness_alternative">Wellness &amp; alternative</string>
+    <string name="category_relationships_dating">Relationships &amp; dating</string>
+
+    <!-- Action type labels — shown on Log screen filter chips and entries -->
+    <string name="action_type_search_query">SEARCH</string>
+    <string name="action_type_ad_click">AD CLICK</string>
+    <string name="action_type_page_visit">PAGE VISIT</string>
+    <string name="action_type_location_spoof">LOCATION</string>
+    <string name="action_type_dns_lookup">DNS</string>
+    <string name="action_type_cookie_harvest">COOKIES</string>
+    <string name="action_type_deep_link_visit">DEEP LINK</string>
+    <string name="action_type_fingerprint_rotate">FINGERPRINT</string>
+    <string name="action_type_ad_profile_import">AD IMPORT</string>
+
+    <!-- Log screen + crash dialog -->
+    <string name="log_screen_title">ACTION LOG</string>
+    <string name="log_export_content_desc">Export</string>
+    <string name="log_export_csv">Export CSV</string>
+    <string name="log_export_json">Export JSON</string>
+    <string name="log_export_chooser_title">Export Log</string>
+    <string name="log_filter_all">All</string>
+    <string name="log_detail_type">Type</string>
+    <string name="log_detail_category">Category</string>
+    <string name="log_detail_detail">Detail</string>
+    <string name="log_detail_time">Time</string>
+    <string name="log_detail_status">Status</string>
+    <string name="log_detail_status_success">Success</string>
+    <string name="log_detail_status_failed">Failed</string>
+    <string name="crash_dialog_title">Fauxx Crashed</string>
+    <string name="crash_dialog_body">Fauxx crashed during the last session. You can share the crash report to help diagnose the issue. The report has been scrubbed of personal data.</string>
+    <string name="crash_dialog_share">Share Report</string>
+    <string name="crash_dialog_dismiss">Dismiss</string>
+
+    <!-- Bottom navigation labels -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_targeting">Targeting</string>
+    <string name="nav_modules">Modules</string>
+    <string name="nav_log">Log</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_onboarding">Onboarding</string>
+    <string name="nav_back_content_desc">Back</string>
+    <string name="nav_help_content_desc">Help</string>
+    <string name="crash_export_sheet_title">Crash Report</string>
 
     <!-- Demographic enum labels (onboarding pickers) -->
     <string name="age_18_24">18–24</string>
@@ -165,15 +247,187 @@
     <string name="faq_title">FAQ</string>
     <string name="faq_back">Back</string>
     <string name="help_menu_faq">FAQ</string>
+    <string name="help_menu_help">Help</string>
+    <string name="help_menu_contact">Contact us</string>
     <string name="faq_q1_question">Why does Fauxx sometimes stop and show a “Tap to resume protection” notification?</string>
-    <string name="faq_q1_answer">Android 14 and newer cap the kind of background service Fauxx uses to 6 cumulative hours per 24 hours while the app is in the background. To stay safely under that ceiling, Fauxx voluntarily stops itself a bit early and posts a one-tap notification so you can resume when you next pick up your phone.\n\nYou\'ll typically see this notification:\n\n• In the morning if you have quiet hours configured (default 7am–11pm). Rather than burn the daily budget idling overnight, Fauxx stops at 11pm and reappears at 7am as a tap-to-resume.\n• After about 5 hours of continuous backgrounded run-time. Fauxx self-stops at 5h with a 1h safety margin under the OS limit.\n• After a long no-WiFi pause if you have “WiFi only” enabled. Sustained pauses past 30 minutes release the slot rather than spinning idle.\n\nTapping the notification opens Fauxx and restarts protection. Nothing is lost — your settings, profile, persona, and action log are persistent.\n\nThis affects the F-Droid / sideload build specifically. The Play Store build uses a different foreground-service type that doesn\'t have the 6-hour cap; the behavior is otherwise identical.</string>
-    <string name="faq_q2_question">Sometimes I enable protection and it stops almost immediately — why?</string>
-    <string name="faq_q2_answer">Fauxx tracks how much foreground-service time you\'ve used in the past 24 hours, persisted across app restarts. If you\'ve already used most of the daily budget — for example a 4-hour session earlier today — a new session has less room before the cap resets. Fauxx will start, see there\'s no headroom left, and post the tap-to-resume notification scheduled for when the budget window expires.\n\nYou can wait for the notification to fire later, or check Settings → Active hours and WiFi only to confirm your constraint settings aren\'t pausing the engine.</string>
-    <string name="faq_q3_question">Why did Fauxx crash overnight on older versions?</string>
-    <string name="faq_q3_answer">Versions before this release didn\'t proactively stop the foreground service during long pauses, so it could accumulate the full 6 hours of cumulative runtime while idle — for example during configured quiet hours. When Android 14+ enforced the limit, the system force-stopped the process with a ForegroundServiceDidNotStopInTimeException. This release adds the budget tracker and the tap-to-resume flow described above, so the crash should no longer occur.\n\nIf you\'re still seeing crashes, please file an issue from Settings (“File a GitHub issue”).</string>
+    <string name="faq_q1_answer">Fauxx voluntarily pauses the engine when one of your configured constraints kicks in:\n\n• Quiet hours: if you have an active-hours window set (default 7am–11pm), Fauxx stops at the end of the window and posts a one-tap notification scheduled for the next start time.\n• WiFi only: if you have “WiFi only” enabled in Settings and lose WiFi for more than 30 minutes, Fauxx releases the foreground-service slot rather than spin idle.\n• Battery threshold: if your battery is below the configured threshold and the device isn\'t charging, Fauxx pauses until the situation changes.\n\nTapping the notification opens Fauxx and restarts protection. Nothing is lost — your settings, profile, persona, and action log are persistent across pauses.\n\nIf you\'re seeing the engine stop outside of these configured constraints, please file an issue from Settings (“File a GitHub issue”) — that\'s a bug, not by design.</string>
     <string name="faq_q4_question">What does “Noise Ratio” on the Dashboard mean?</string>
     <string name="faq_q4_answer">It\'s a throughput indicator: actions today divided by 500, capped at 100%. 500 actions in a day reads as a saturated 100%.\n\nIt does NOT measure the quality of the noise — whether the synthetic activity is hitting off-profile categories, fooling profiling systems, or covering a diverse range of topics. It\'s just a rate gauge.\n\nFor a view of where the noise is actually going, check the Targeting screen\'s category-weight chart. Red bars are categories Fauxx is suppressing (because they match your real profile), green bars are categories it\'s boosting, gray is neutral.</string>
-    <string name="faq_q5_question">How does the “Adversarial Scraper” (Layer 2) work, and why does it sometimes say “Last scraped: Never”?</string>
-    <string name="faq_q5_answer">Layer 2 reads your existing ad-platform interest profiles from Google Ads Settings and Facebook Ad Preferences. It uses those to find categories the ad networks have already learned about you, then tells the engine to suppress them — so the synthetic activity steers away from your real profile.\n\nThings to know:\n\n• Takes up to about 60 seconds: each platform has a 30-second timeout and Google + Facebook run sequentially.\n• Does NOT log you in. Fauxx reads cookies that are already on your device. You need to be signed into myadcenter.google.com and Facebook\'s ad preferences page in your browser first, otherwise the scraper silently returns zero categories and “Last scraped” stays as “Never.”\n• Read-only. The scraper never modifies, clicks, or interacts with your ad-platform settings — it just reads what\'s already there.\n• Auto-refreshes every 7 days on WiFi once Layer 2 is enabled. “Scrape Now” is a manual override that works on cellular too.\n\nIf you\'re on v0.2.6 or older and “Scrape Now” doesn\'t seem to do anything, that\'s a bug fixed in v0.2.7.</string>
+    <string name="faq_q5_question">How does Layer 2 (Ad Profile Import) work, and where do I get the export file?</string>
+    <string name="faq_q5_answer">Layer 2 takes the ad-targeting profile that Google and Facebook already keep on you and uses it to steer Fauxx away from your real interests — synthetic activity gets boosted in the OTHER categories.\n\nYou export your own data and import the file into Fauxx; no sign-in inside the app, no automated scraping. Android sandboxes cookies per app, so Fauxx genuinely can\'t see your browser session, and Google + Facebook block sign-in from any embedded WebView, so a “sign in here” flow isn\'t possible. User-driven export sidesteps both.\n\nHow to export:\n\n• Google — visit takeout.google.com in your browser, select “My Ad Center” specifically (skip the rest of the takeout to keep the file small), pick JSON format, request the export. Google emails a download link, usually within minutes. Tap “Import Google Takeout” in Fauxx and pick the resulting .zip (or the MyAdCenter.json file from inside it).\n• Facebook — visit accountscenter.facebook.com, choose Download Your Information → JSON format → “Ads and businesses”. Facebook prepares the archive, emails the link, and you import it via “Import Facebook DYI”.\n\nThings to know:\n\n• Read-only. Fauxx never modifies or interacts with your ad settings on either platform — only reads what\'s in the export.\n• Stays on device. The imported categories are written to the same SQLCipher-encrypted database as the rest of your data. Nothing leaves your phone.\n• Refresh cadence is up to you. Re-import whenever you want a fresh snapshot — Fauxx will nudge you with an in-app banner if the last import is over 90 days old (snooze / mute available).</string>
     <string name="boot_guard_safe_mode_notice">Fauxx disabled Layer 2 and the engine after repeated startup hangs. Re-enable them from Targeting and Dashboard when you\'re ready to try again.</string>
+
+    <!-- Modules screen -->
+    <string name="modules_title">MODULES</string>
+    <string name="module_search_name">Search Poisoning</string>
+    <string name="module_search_description">Executes search queries across Google, Bing, DuckDuckGo, Yahoo</string>
+    <string name="module_cookie_name">Cookie Saturation</string>
+    <string name="module_cookie_description">Visits 10,000+ URLs in background to accumulate diverse tracker cookies</string>
+    <string name="module_dns_name">DNS Noise</string>
+    <string name="module_dns_description">Resolves diverse domains to generate ISP-visible DNS query noise</string>
+    <string name="module_fingerprint_name">Fingerprint Rotation</string>
+    <string name="module_fingerprint_description">Rotates User-Agent, canvas noise, and navigator properties</string>
+    <string name="module_ad_name">Ad Pollution</string>
+    <string name="module_ad_description">Loads ad-heavy pages and visits ad preference dashboards</string>
+    <string name="module_location_name">Location Spoofing</string>
+    <string name="module_location_description">Feeds synthetic GPS routes via MockLocationProvider</string>
+    <string name="module_location_setup_hint">Requires Developer Options enabled and Fauxx selected as mock location app</string>
+    <string name="module_appsignal_name">App Signals</string>
+    <string name="module_appsignal_description">Opens app store pages for off-profile apps to trigger attribution pixels</string>
+
+    <!-- Modules screen — location setup dialog + diagnostic banners -->
+    <string name="module_location_setup_dialog_title">One more step</string>
+    <string name="module_location_setup_dialog_body">Android requires you to designate Fauxx as the mock location app:\n\n1. Enable Developer Options if you haven\'t yet: Settings → About phone → tap Build Number 7 times.\n\n2. Open Developer Options → \"Select mock location app\" and choose Fauxx.\n\nWithout this step, Location Spoofing will silently do nothing.</string>
+    <string name="module_location_success_title">Mock location active</string>
+    <string name="module_location_success_body">Fauxx is registered as the system mock-location provider and feeding synthetic GPS fixes.</string>
+    <string name="module_location_failure_not_mock_app_title">Fauxx is not the mock location app</string>
+    <string name="module_location_failure_not_mock_app_body">Open Developer Options → Select mock location app → choose Fauxx, then restart the engine.</string>
+    <string name="module_location_failure_security_title">Mock provider rejected by Android</string>
+    <string name="module_location_failure_security_body">The system blocked addTestProvider despite the app op being allowed. Try toggling Fauxx off and back on under Developer Options → Select mock location app, then restart Fauxx.</string>
+    <string name="module_location_failure_runtime_title">Could not register mock provider</string>
+    <string name="module_location_failure_runtime_body">Android refused the mock provider for an unexpected reason. Check app logs for details.</string>
+
+    <!-- Common action labels reused across dialogs -->
+    <string name="action_open_developer_options">Open Developer Options</string>
+    <string name="action_got_it">Got it</string>
+    <string name="action_cancel">Cancel</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">SETTINGS</string>
+    <string name="settings_intensity_title">Intensity</string>
+    <string name="settings_intensity_actions_per_hour">%d actions/hour</string>
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_theme_system_subtitle">Follows your device theme</string>
+    <string name="settings_theme_light_subtitle">Always light</string>
+    <string name="settings_theme_dark_subtitle">Always dark</string>
+    <string name="settings_wifi_only_title">Wi-Fi Only</string>
+    <string name="settings_wifi_only_description">Pause when on mobile data</string>
+    <string name="settings_resume_on_boot_title">Resume after reboot</string>
+    <string name="settings_resume_on_boot_description">After a reboot, show a notification to resume protection. Android blocks apps from silently starting themselves in the background, so a tap is required.</string>
+    <string name="settings_battery_threshold_title">Pause below</string>
+    <string name="settings_battery_ignore_while_charging_title">Ignore threshold while charging</string>
+    <string name="settings_battery_ignore_while_charging_description">Keep running below the threshold when the device is plugged in.</string>
+    <string name="settings_active_hours_title">Active Hours</string>
+    <string name="settings_active_hours_start_label">Start</string>
+    <string name="settings_active_hours_end_label">End</string>
+    <string name="settings_active_hours_description">Activity is paused outside these hours</string>
+    <string name="settings_active_hours_narrow_window_warning">A narrow activity window (%dh) can itself be a trackable signal. Wider windows (12h+) are harder for trackers to distinguish from real usage.</string>
+    <string name="settings_custom_ua_title">Match my browser</string>
+    <string name="settings_custom_ua_description">By default, Fauxx rotates between many browser identifiers — but real people usually use one browser, so the variety can itself look like bot traffic. Tap below to use this device\'s built-in browser identifier instead, so the noise blends with your real activity. Leave blank to keep the default rotation.</string>
+    <string name="settings_custom_ua_use_device_button">Use this device\'s browser</string>
+    <string name="settings_custom_ua_field_label">Browser identifier (advanced — leave blank to auto-rotate)</string>
+    <string name="settings_custom_ua_placeholder">Mozilla/5.0 (…)</string>
+    <string name="settings_custom_ua_clear_button">Clear and resume rotation</string>
+    <string name="settings_clear_all_data_button">Clear All Data</string>
+    <string name="settings_export_debug_logs_button">Export Debug Logs</string>
+    <string name="settings_about_privacy_button">About &amp; Privacy Policy</string>
+    <string name="settings_version_info">Fauxx v%1$s (build %2$d)</string>
+    <string name="settings_clear_dialog_title">Clear All Data?</string>
+    <string name="settings_clear_dialog_body">This will permanently delete:\n• All action logs\n• Your demographic profile\n• Ad platform profile cache\n• Persona generation history\n\nAll settings will be reset to defaults. The engine will stop and return to Layer 0 (uniform noise).\n\nThis cannot be undone.</string>
+    <string name="settings_clear_dialog_confirm">Clear Everything</string>
+
+    <!-- Targeting screen -->
+    <string name="targeting_title">TARGETING ENGINE</string>
+    <string name="targeting_layer1_name">Layer 1 — Self Report</string>
+    <string name="targeting_layer1_description">Boosts noise away from your declared demographics</string>
+    <string name="targeting_layer1_status_set">Profile set</string>
+    <string name="targeting_layer1_status_unset">No profile</string>
+    <string name="targeting_layer2_name">Layer 2 — Ad Profile Import</string>
+    <string name="targeting_layer2_description">Imports your existing ad profile from Google Takeout / Facebook DYI</string>
+    <string name="targeting_layer2_last_imported">Last imported: %s</string>
+    <string name="targeting_import_never_label">Never</string>
+
+    <!-- Layer 2 import card + result row + 90-day reminder banner -->
+    <string name="targeting_import_card_title">Import ad profile</string>
+    <string name="targeting_import_card_body">Export your ad-targeting data from Google Takeout or Facebook Download Your Information, then import the file here. Fauxx never logs in for you and never modifies your ad settings.</string>
+    <string name="targeting_import_google_button">Import Google Takeout</string>
+    <string name="targeting_import_google_button_busy">Importing Google Takeout…</string>
+    <string name="targeting_import_facebook_button">Import Facebook DYI</string>
+    <string name="targeting_import_facebook_button_busy">Importing Facebook DYI…</string>
+    <string name="targeting_import_success">Imported %1$s from %2$s.</string>
+    <string name="targeting_import_count_one">1 category</string>
+    <string name="targeting_import_count_many">%d categories</string>
+    <string name="targeting_import_parse_error">Couldn\'t parse the %1$s archive: %2$s</string>
+    <string name="targeting_import_io_error">Couldn\'t read the file. Permission may have been revoked.</string>
+    <string name="targeting_import_wrong_format_google">Couldn\'t find an ad-interest file inside the archive. Try exporting \"My Ad Center\" specifically from Google Takeout (not the full archive).</string>
+    <string name="targeting_import_wrong_format_facebook">Couldn\'t find an ad-interest file inside the archive. From accountscenter.facebook.com, choose Download Your Information → JSON format → \"Ads and businesses\" specifically.</string>
+    <string name="targeting_import_dismiss_cd">Dismiss</string>
+    <string name="targeting_import_reminder_body">Your Layer 2 ad profile is over 90 days old. Re-import a fresh export to keep targeting up to date.</string>
+    <string name="targeting_import_snooze_button">Remind me in 30 days</string>
+    <string name="targeting_import_mute_button">Don\'t remind me</string>
+
+    <string name="targeting_layer3_name">Layer 3 — Persona Rotation</string>
+    <string name="targeting_layer3_description">Maintains coherent synthetic personas (rotates weekly)</string>
+    <string name="targeting_layer3_status_active">Persona: %s</string>
+    <string name="targeting_layer3_status_none">No persona yet</string>
+    <string name="targeting_layer3_action_rotate_now">Rotate Now</string>
+    <string name="targeting_clear_profile_button">Clear My Profile</string>
+    <string name="targeting_clear_dialog_title">Clear Profile?</string>
+    <string name="targeting_clear_dialog_body">This will delete your demographic profile, all platform data, and persona history. The engine will revert to uniform random targeting.</string>
+    <string name="targeting_clear_dialog_confirm">Clear</string>
+    <string name="targeting_profile_summary_title">MY PROFILE</string>
+    <string name="targeting_profile_summary_empty">No profile saved. Setting one up lets Layer 1 steer the noise away from your real demographics.</string>
+    <string name="targeting_profile_set_up_button">Set up profile</string>
+    <string name="targeting_profile_edit_button">Edit my profile</string>
+    <string name="targeting_profile_row_age">Age</string>
+    <string name="targeting_profile_row_gender">Gender</string>
+    <string name="targeting_profile_row_profession">Profession</string>
+    <string name="targeting_profile_row_region">Region</string>
+    <string name="targeting_profile_row_interests">Interests</string>
+    <string name="targeting_category_weights_title">CATEGORY WEIGHTS</string>
+    <string name="targeting_custom_interests_title">Custom Interests</string>
+    <string name="targeting_custom_interests_description">Add specific interests to suppress (mapped to nearest category)</string>
+    <string name="targeting_custom_interest_mapped">%1$s → %2$s</string>
+    <string name="targeting_custom_interest_unmapped">%s (unmapped)</string>
+    <string name="targeting_scrape_dialog_title">Layer 2 couldn\'t read your ad profiles</string>
+    <string name="targeting_scrape_dialog_body">The Adversarial Scraper tries to read what Google and Facebook think they know about you, then steers the noise away from those interests. It just got back an empty list, which usually means the scraper has no signed-in session for those sites.\n\nHeads-up: Fauxx\'s scraper has its own browser session, separate from Chrome/Brave/Firefox where you may already be signed in — Android doesn\'t let apps share login cookies with each other. And Google/Facebook don\'t allow sign-in from an in-app browser either, so a \'sign in here\' button isn\'t possible.\n\nLayer 2 is being redesigned to import your ad profile directly (via Google Takeout or a browser bookmarklet) so it doesn\'t need a live session at all. In the meantime, Layers 1 and 3 still work without any scraping.</string>
+
+    <!-- Dashboard screen — warnings, engine state, donut chart, persona, noise ratio -->
+    <string name="dashboard_warning_notification_denied">Notification permission denied — background activity indicator is hidden. Grant notification permission in Settings to see the status notification.</string>
+    <string name="dashboard_warning_action_open_settings">Open settings</string>
+    <string name="dashboard_warning_battery_optimized">Android battery optimization is restricting Fauxx. Background activity will pause when the screen is off. Allow unrestricted background usage to keep the engine running.</string>
+    <string name="dashboard_warning_action_allow">Allow</string>
+    <string name="dashboard_engine_state_active">Generating synthetic activity</string>
+    <string name="dashboard_engine_state_paused_wifi">Wi-Fi only mode — waiting for Wi-Fi</string>
+    <string name="dashboard_engine_state_paused_battery">Battery below threshold</string>
+    <string name="dashboard_engine_state_paused_rate_limit">Hourly rate limit reached</string>
+    <string name="dashboard_engine_state_paused_quiet_hours">Outside active hours</string>
+    <string name="dashboard_engine_state_stopped">Engine stopped</string>
+    <string name="dashboard_action_use_mobile_data">Use mobile data</string>
+    <string name="dashboard_category_distribution_title">CATEGORY DISTRIBUTION</string>
+    <string name="dashboard_category_distribution_help">Shows how your synthetic noise is spread across topic categories. A wider spread means trackers see a more confused profile. Categories are weighted by the targeting engine to maximize distance from your real interests.</string>
+    <string name="dashboard_category_other">other</string>
+    <string name="dashboard_chart_legend_entry">%1$s %2$d%%</string>
+    <string name="dashboard_active_persona_title">ACTIVE PERSONA</string>
+    <string name="dashboard_active_persona_help">A synthetic identity the engine adopts for about a week. Activity is weighted toward this persona\'s interests to create temporally coherent noise — making it harder for trackers to filter out the fake signal. Personas rotate automatically.</string>
+    <string name="dashboard_persona_subtitle">%1$s · %2$s</string>
+    <string name="dashboard_noise_ratio_title">NOISE RATIO</string>
+    <string name="dashboard_noise_ratio_help">Estimates how much of your visible browsing profile is synthetic noise vs real activity. Higher is better — at 80%%+, a data broker would need to correctly identify 4 out of 5 signals as fake to build an accurate profile.</string>
+    <string name="dashboard_noise_ratio_value">%d%%</string>
+    <string name="dashboard_battery_dialog_title">Keep Fauxx running in the background</string>
+    <string name="dashboard_battery_dialog_body_intro">Android aggressively pauses background apps to save battery. For continuous profile poisoning, Fauxx needs to be exempt from battery optimization.</string>
+    <string name="dashboard_battery_dialog_body_action">On the next screen, choose \"Allow\" so the engine can keep generating synthetic activity while your screen is off.</string>
+    <string name="dashboard_battery_dialog_continue">Continue</string>
+    <string name="dashboard_battery_dialog_not_now">Not now</string>
+
+    <!-- Log export sheet -->
+    <string name="log_export_scrubbed_notice">All personal data has been scrubbed from the logs.</string>
+    <string name="log_export_option_github">File a GitHub Issue</string>
+    <string name="log_export_option_github_description">Opens a pre-filled issue form. Logs are embedded directly when they fit, otherwise copied to your clipboard for pasting below.</string>
+    <string name="log_export_option_share">Share via…</string>
+    <string name="log_export_option_share_description">Send to email, Slack, or another app</string>
+    <string name="log_export_option_save">Save to device</string>
+    <string name="log_export_option_save_description">Saves to Downloads folder</string>
+    <string name="log_export_option_copy">Copy to clipboard</string>
+    <string name="log_export_option_copy_description">Copy the full log text</string>
+    <string name="log_export_toast_crash_report_ready">Crash report ready — review and submit</string>
+    <string name="log_export_toast_trace_truncated">Truncated trace embedded; full trace on clipboard — paste below if you want the full context</string>
+    <string name="log_export_toast_no_browser_clipboard">No browser found — logs copied to clipboard</string>
+    <string name="log_export_toast_no_browser_issue_tracker">No browser found to open issue tracker</string>
+    <string name="log_export_share_text">Fauxx %s — see attached file.</string>
+    <string name="log_export_toast_no_sharing_app">No sharing app found</string>
+    <string name="log_export_toast_save_requires_android_10">Save to Downloads requires Android 10+</string>
+    <string name="log_export_toast_saved_to_downloads">Saved to Downloads/%s</string>
+    <string name="log_export_toast_save_failed">Failed to save file</string>
+    <string name="log_export_toast_copied_to_clipboard">Copied to clipboard</string>
 </resources>
