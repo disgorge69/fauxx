@@ -20,7 +20,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.random.Random
 
-private const val MOCK_PROVIDER = "fauxx_mock"
+private const val MOCK_PROVIDER = MOCK_LOCATION_PROVIDER
 
 /**
  * Manages the MockLocationProvider lifecycle and feeds coordinates from [FakeRouteGenerator].
