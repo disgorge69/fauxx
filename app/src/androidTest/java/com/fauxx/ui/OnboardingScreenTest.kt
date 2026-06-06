@@ -31,7 +31,7 @@ class OnboardingScreenTest {
     val hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeRule = createAndroidComposeRule<MainActivity>()
+    val composeRule = createAndroidComposeRule<HiltTestActivity>()
 
     @Before
     fun setUp() {
