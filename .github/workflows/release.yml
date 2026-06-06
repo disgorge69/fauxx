@@ -107,7 +107,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - flavorName: Play
+          # Full only: the deprecated, unshipped play flavor must not be able to block a
+          # release. Its compile-and-unit-test signal lives in ci.yml on every push/PR.
           - flavorName: Full
     steps:
       - name: Checkout
@@ -131,7 +132,7 @@ jobs:
     needs: gate
     uses: ./.github/workflows/instrumented-tests.yml
 
-  # Lint the actual shipped release variants before signing. Both pass against the committed
+  # Lint the actual shipped release variant before signing. It passes against the committed
   # lint-baseline.xml (warningsAsErrors is off, so only un-baselined errors fail the build);
   # this stops a release-only lint regression from reaching a signed artifact.
   lint:
@@ -164,9 +165,15 @@ jobs:
       matrix:
         include:
           # The Google Play build is no longer published. The `play` build flavor stays in the
-          # source (still compiled + unit-tested in ci.yml) so it can be revived, but it is no
-          # longer built, signed, or released here. To revive: re-add a `- flavor: play` entry
-          # with `gradleTask: bundlePlayRelease` (artifact app-play-release.aab).
+          # source (still debug-compiled + unit-tested in ci.yml) so it can be revived, but it
+          # is no longer built, signed, released, or allowed to gate anything. To revive it:
+          #   - re-add here: `- flavor: play / flavorName: Play / gradleTask: bundlePlayRelease /
+          #     artifactSrcDir: app/build/outputs/bundle/playRelease /
+          #     artifactSrcName: app-play-release.aab / artifactExt: aab`
+          #   - re-add `- flavorName: Play` to the unit-tests matrix above
+          #   - widen the publish job's `files:` glob below (it only attaches fauxx-full-*.apk;
+          #     an unmatched AAB would be dropped silently)
+          #   - restore the play quality gates in ci.yml (lint/coverage) if it ships again
           - flavor: full
             flavorName: Full
             gradleTask: assembleFullRelease

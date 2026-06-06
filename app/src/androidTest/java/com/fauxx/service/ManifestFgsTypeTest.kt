@@ -15,7 +15,9 @@ import org.junit.runner.RunWith
  * [android.app.Service.startForeground] throws when the runtime type doesn't match what the
  * manifest declares, so a flavor that loses or changes `foregroundServiceType` would crash the
  * engine at start — exactly the kind of per-flavor manifest drift a source grep can miss. Both
- * the play and full flavors must declare `specialUse`.
+ * flavors declare `specialUse`, but CI only exercises this against the shipped full flavor
+ * (`connectedFullDebugAndroidTest`); the deprecated play flavor's manifest is merged by its
+ * compile leg yet no longer asserted here.
  */
 @RunWith(AndroidJUnit4::class)
 class ManifestFgsTypeTest {
