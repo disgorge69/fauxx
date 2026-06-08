@@ -17,10 +17,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - flavor: play
-            flavorName: Play
+          # full is the shipped flavor (F-Droid / GitHub releases) and carries every
+          # quality gate: coverage ratchet, lint, and (in release.yml) the instrumented
+          # suite. play is deprecated and unshipped — its leg is kept as a cheap
+          # debug-compile-and-unit-test signal only, so source-level rot is caught while
+          # the flavor stays revivable (see the "Where to get it" note in README.md;
+          # playRelease/R8 and play lint are deliberately NOT exercised anywhere).
           - flavor: full
             flavorName: Full
+          - flavor: play
+            flavorName: Play
 
     steps:
       - name: Checkout
@@ -43,11 +49,11 @@ jobs:
         run: ./gradlew test${{ matrix.flavorName }}DebugUnitTest
 
       - name: Coverage gate (ratcheting)
-        if: matrix.flavor == 'play'
-        run: ./gradlew koverVerifyPlayDebug
+        if: matrix.flavor == 'full'
+        run: ./gradlew koverVerifyFullDebug
 
       - name: Android Lint
-        if: matrix.flavor == 'play'
+        if: matrix.flavor == 'full'
         run: ./gradlew lint${{ matrix.flavorName }}Debug
 
       - name: Build debug APK
@@ -61,7 +67,7 @@ jobs:
           path: app/build/reports/tests/
 
       - name: Upload lint results
-        if: always() && matrix.flavor == 'play'
+        if: always() && matrix.flavor == 'full'
         uses: actions/upload-artifact@v7
         with:
           name: lint-results-${{ matrix.flavor }}
@@ -74,7 +80,7 @@ jobs:
           path: app/build/outputs/apk/${{ matrix.flavor }}/debug/app-${{ matrix.flavor }}-debug.apk
 
   # Posts (and updates in place) a coverage summary on each PR. The hard gate is
-  # koverVerifyPlayDebug in the build job above; this is just the at-a-glance number so a
+  # koverVerifyFullDebug in the build job above; this is just the at-a-glance number so a
   # reviewer sees where a change moves coverage without opening the report artifact.
   coverage-comment:
     name: Coverage comment
@@ -98,14 +104,14 @@ jobs:
         run: chmod +x gradlew
 
       - name: Generate coverage XML
-        run: ./gradlew koverXmlReportPlayDebug
+        run: ./gradlew koverXmlReportFullDebug
 
       - name: Extract line coverage
         id: cov
         run: |
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
           import xml.etree.ElementTree as ET
-          root = ET.parse("app/build/reports/kover/reportPlayDebug.xml").getroot()
+          root = ET.parse("app/build/reports/kover/reportFullDebug.xml").getroot()
           line = [c for c in root.findall("counter") if c.get("type") == "LINE"][0]
           covered = int(line.get("covered"))
           total = covered + int(line.get("missed"))
@@ -113,15 +119,24 @@ jobs:
           print(f"pct={pct:.2f}")
           print(f"covered={covered}")
           print(f"total={total}")
+          # Read the ratchet floor from the baseline file so the comment can never go
+          # stale against the real gate (it previously hardcoded an outdated number).
+          with open("app/kover-baseline.properties") as f:
+              for raw in f:
+                  if raw.strip().startswith("line.coverage.min="):
+                      print(f"floor={raw.strip().split('=', 1)[1]}")
+                      break
+              else:
+                  raise SystemExit("line.coverage.min not found in kover-baseline.properties")
           PY
 
       - name: Post sticky coverage comment
         uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0 # v3.0.4
         with:
-          header: coverage-playdebug
+          header: coverage-fulldebug
           message: |
-            ### 📊 Code coverage (playDebug)
+            ### 📊 Code coverage (fullDebug)
 
-            **${{ steps.cov.outputs.pct }}%** line coverage — ${{ steps.cov.outputs.covered }} / ${{ steps.cov.outputs.total }} lines covered · ratchet floor **52%**
+            **${{ steps.cov.outputs.pct }}%** line coverage — ${{ steps.cov.outputs.covered }} / ${{ steps.cov.outputs.total }} lines covered · ratchet floor **${{ steps.cov.outputs.floor }}%**
 
-            Hard-gated by `koverVerifyPlayDebug`. Raise `app/kover-baseline.properties` as coverage grows. Generated code and Compose UI screens are excluded from the measurement.
+            Hard-gated by `koverVerifyFullDebug`. Raise `app/kover-baseline.properties` as coverage grows. Generated code and Compose UI screens are excluded from the measurement.

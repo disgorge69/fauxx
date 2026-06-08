@@ -303,7 +303,11 @@ kover {
                 )
             }
         }
-        variant("playDebug") {
+        // Measured against the full flavor — the shipped (F-Droid / GitHub) build. The play
+        // flavor is deprecated and unshipped; it only gets a compile-and-unit-test CI leg, so
+        // gating coverage on it would measure code (DiverseBrowsing/LocationSignal modules)
+        // that never ships while exempting nothing that does.
+        variant("fullDebug") {
             verify {
                 rule {
                     bound {

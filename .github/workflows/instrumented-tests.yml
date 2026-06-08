@@ -49,7 +49,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run instrumented tests (play debug)
+      - name: Run instrumented tests (full debug)
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
@@ -60,8 +60,9 @@ jobs:
           cores: 4
           emulator-boot-timeout: 900
           disable-animations: true
-          # SQLCipher migration + manifest/DAO tests live in the play debug variant's androidTest.
-          script: ./gradlew connectedPlayDebugAndroidTest
+          # androidTest is a single flavor-shared source set; it runs against the full
+          # debug variant — the shipped flavor — now that play is deprecated.
+          script: ./gradlew connectedFullDebugAndroidTest
 
       - name: Upload instrumented test results
         if: always()
