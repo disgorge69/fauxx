@@ -63,12 +63,14 @@ class FingerprintModuleTest {
         val ua = "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 " +
             "(KHTML, like Gecko) Chrome/142.0.0.0 Mobile Safari/537.36"
         val p = persona()
+        val dev = device(ua)
         every { personaRotationLayer.personaForChannel(PersonaChannel.DEVICE) } returns p
-        every { deviceDeriver.mobileFor(p) } returns device(ua)
+        every { deviceDeriver.mobileFor(p) } returns dev
 
         val result = newModule().onAction(CategoryPool.GAMING)
 
-        verify(exactly = 1) { webViewPool.setUserAgent(ua) }
+        // The whole device is bound (UA + fixed navigator values), not just a UA string.
+        verify(exactly = 1) { webViewPool.setDevice(dev) }
         verify(exactly = 0) { userAgentPool.randomChromiumAndroid() }
         assertEquals(ActionType.FINGERPRINT_ROTATE, result.actionType)
         assertEquals(CategoryPool.GAMING, result.category)
@@ -82,8 +84,9 @@ class FingerprintModuleTest {
 
         val result = newModule().onAction(CategoryPool.GAMING)
 
-        // Seed-if-unset (stable), never a per-action setUserAgent churn.
+        // Seed-if-unset (stable), never a per-action device/UA churn.
         verify(exactly = 1) { webViewPool.setUserAgentIfUnset("UA-seed") }
+        verify(exactly = 0) { webViewPool.setDevice(any()) }
         verify(exactly = 0) { webViewPool.setUserAgent(any()) }
         assertEquals(ActionType.FINGERPRINT_ROTATE, result.actionType)
         assertTrue("detail must note the held state; was: ${result.detail}", result.detail.contains("held"))

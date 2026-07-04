@@ -42,7 +42,7 @@ class FingerprintModule @Inject constructor(
     override suspend fun start() {
         val device = currentDevice()
         if (device != null) {
-            webViewPool.setUserAgent(device.userAgent)
+            webViewPool.setDevice(device)
         } else {
             // No active persona (Layer 3 off): seed a stable UA once; never churn per action.
             webViewPool.setUserAgentIfUnset(userAgentPool.randomChromiumAndroid())
@@ -58,7 +58,7 @@ class FingerprintModule @Inject constructor(
         val device = currentDevice()
         return if (device != null) {
             // Idempotent re-assert of the persona's stable device (changes only on persona rotation).
-            webViewPool.setUserAgent(device.userAgent)
+            webViewPool.setDevice(device)
             ActionLogEntity(
                 actionType = ActionType.FINGERPRINT_ROTATE,
                 category = category,
