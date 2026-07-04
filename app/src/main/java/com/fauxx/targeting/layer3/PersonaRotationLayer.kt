@@ -334,6 +334,9 @@ class PersonaRotationLayer @Inject constructor(
  * rotated persona after its own deterministic lag — see
  * [PersonaRotationLayer.personaForChannel]. WEIGHTS is the Layer 3 category
  * distribution itself (added by E9 #176: the peakier blend made an unstaggered
- * weights flip the sharpest remaining rotation change-point).
+ * weights flip the sharpest remaining rotation change-point). DEVICE is the
+ * persona's browser/device identity (issue #242): the WebView presents the
+ * persona's stable mobile [com.fauxx.data.device.DeviceProfile], staggered so the
+ * User-Agent does not flip in the same instant as the other channels at rotation.
  */
-enum class PersonaChannel { LOCATION, APP_SIGNAL, RHYTHM, WEIGHTS, QUERY }
+enum class PersonaChannel { LOCATION, APP_SIGNAL, RHYTHM, WEIGHTS, QUERY, DEVICE }
