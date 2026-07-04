@@ -23,6 +23,7 @@ import com.fauxx.sync.pairing.PairingManager
 import com.fauxx.sync.transport.SyncListener
 import com.fauxx.sync.transport.TcpClient
 import com.fauxx.sync.wire.SyncConstants
+import com.fauxx.targeting.layer3.PersonaRotationLayer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -54,6 +55,7 @@ class SyncForegroundService : Service() {
     @Inject lateinit var multicastLock: MulticastLockHolder
     @Inject lateinit var tcpClient: TcpClient
     @Inject lateinit var pairedPeerRepository: PairedPeerRepository
+    @Inject lateinit var personaRotationLayer: PersonaRotationLayer
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private var started = false
@@ -108,7 +110,11 @@ class SyncForegroundService : Service() {
                 val fingerprint = sealedChannel.fingerprint()
                 val name = pairingManager.deviceName()
                 nsdDiscovery.advertise(name, SyncConstants.DEFAULT_SYNC_PORT, pkB64, fingerprint)
-                syncListener.start(scope, SyncConstants.DEFAULT_SYNC_PORT)
+                // Auto-adopt a received persona as the active one (#234) so paired devices converge
+                // to a single coherent persona, rather than the receiver silently keeping its own.
+                syncListener.start(scope, SyncConstants.DEFAULT_SYNC_PORT) { persona, _ ->
+                    personaRotationLayer.adoptSyncedPersona(persona)
+                }
                 // Feed resolved peers that match a paired key into the routing table.
                 nsdDiscovery.discoveredPeers.collectLatest { discovered ->
                     val paired = pairedPeerRepository.getAll().map { it.publicKey }.toHashSet()
