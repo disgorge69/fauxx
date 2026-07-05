@@ -20,7 +20,7 @@
 
     <!-- Onboarding -->
     <string name="onboarding_title">FAUXX</string>
-    <string name="onboarding_subtitle">La vie privée par le bruit</string>
+    <string name="onboarding_subtitle">La vie privée par la tromperie</string>
     <string name="onboarding_intro">Fauxx protège ta vie privée en générant une activité de navigation synthétique en arrière-plan. Voici ce qu\'il fait :</string>
     <string name="onboarding_bullet_search">Effectue des recherches web sur Google, Bing, DuckDuckGo et Yahoo sur des sujets variés</string>
     <string name="onboarding_bullet_browse">Visite une grande variété de sites pour diversifier ton profil de navigation</string>

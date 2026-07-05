@@ -31,7 +31,7 @@
 
     <!-- Onboarding -->
     <string name="onboarding_title">FAUXX</string>
-    <string name="onboarding_subtitle">Приватность через шум</string>
+    <string name="onboarding_subtitle">Приватность через обман</string>
     <string name="onboarding_intro">Fauxx защищает твою приватность, создавая синтетическую активность в браузере в фоновом режиме. Вот что он делает:</string>
     <string name="onboarding_bullet_search">Выполняет веб-поиск в Google, Bing, DuckDuckGo и Yahoo на разные темы</string>
     <string name="onboarding_bullet_browse">Посещает разные сайты, чтобы разнообразить твой профиль браузинга</string>
