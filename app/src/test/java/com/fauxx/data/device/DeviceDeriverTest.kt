@@ -155,9 +155,51 @@ class DeviceDeriverTest {
         )
     }
 
+    @Test
+    fun `golden vector locks the exact derived output (cross-language contract for fauxx-desktop#47)`() {
+        // These frozen outputs ARE the cross-repo contract: the Rust deriver in fauxx-desktop#47 must
+        // reproduce them byte-for-byte from the same persona.id + createdAt (same catalog, same pick,
+        // same version formula). Only regenerate on an INTENTIONAL catalog/algorithm change — and
+        // update the Rust golden test in lockstep. (Regen: temporarily `fail()` printing mobileFor/
+        // desktopFor for GOLDEN_CASES, as in this test's git history.)
+        for ((id, ts) in GOLDEN_CASES) {
+            val p = persona(id, ts)
+            val key = "$id@$ts"
+            assertEquals("mobile golden mismatch for $key", GOLDEN_MOBILE.getValue(key), deriver.mobileFor(p).toString())
+            assertEquals("desktop golden mismatch for $key", GOLDEN_DESKTOP.getValue(key), deriver.desktopFor(p).toString())
+        }
+    }
+
     private companion object {
         // Pinned SHA-256 of app/src/main/assets/device_templates.json. The desktop companion vendors
         // the same file and asserts the same value, so the two repos cannot silently diverge.
         const val DEVICE_TEMPLATES_SHA256 = "3059247b5e83ea09b3ec69d8ed68577c4ceff27d3ca09f0842dd6db0b1e7a3dd"
+
+        // Fixed (id, createdAt) cases pinned as the cross-language golden vector: chosen to span
+        // different templates and Chrome-version boundaries (142 / 145 / 149). fauxx-desktop#47 must
+        // reproduce these.
+        val GOLDEN_CASES = listOf(
+            "11111111-1111-4111-8111-111111111111" to DeviceDeriver.BASELINE_EPOCH_MS,
+            "22222222-2222-4222-8222-222222222222" to (DeviceDeriver.BASELINE_EPOCH_MS + 90L * 24 * 60 * 60 * 1000),
+            "abcdef00-0000-4000-8000-000000000000" to (DeviceDeriver.BASELINE_EPOCH_MS + 200L * 24 * 60 * 60 * 1000),
+        )
+
+        val GOLDEN_MOBILE = mapOf(
+            "11111111-1111-4111-8111-111111111111@1768262400000" to
+                "DeviceProfile(formFactor=MOBILE, userAgent=Mozilla/5.0 (Linux; Android 13; SM-S901B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Mobile Safari/537.36, platform=Android, platformVersion=13.0.0, model=SM-S901B, isMobile=true, brands=[Brand(name=Chromium, version=142), Brand(name=Google Chrome, version=142), Brand(name=Not?A_Brand, version=24)], screenWidth=360, screenHeight=780, devicePixelRatio=3.0, hardwareConcurrency=8, deviceMemory=8)",
+            "22222222-2222-4222-8222-222222222222@1776038400000" to
+                "DeviceProfile(formFactor=MOBILE, userAgent=Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Mobile Safari/537.36, platform=Android, platformVersion=14.0.0, model=Pixel 8, isMobile=true, brands=[Brand(name=Chromium, version=145), Brand(name=Google Chrome, version=145), Brand(name=Not?A_Brand, version=24)], screenWidth=412, screenHeight=915, devicePixelRatio=2.625, hardwareConcurrency=8, deviceMemory=8)",
+            "abcdef00-0000-4000-8000-000000000000@1785542400000" to
+                "DeviceProfile(formFactor=MOBILE, userAgent=Mozilla/5.0 (Linux; Android 14; SM-S911B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36, platform=Android, platformVersion=14.0.0, model=SM-S911B, isMobile=true, brands=[Brand(name=Chromium, version=149), Brand(name=Google Chrome, version=149), Brand(name=Not?A_Brand, version=24)], screenWidth=360, screenHeight=780, devicePixelRatio=3.0, hardwareConcurrency=8, deviceMemory=12)",
+        )
+
+        val GOLDEN_DESKTOP = mapOf(
+            "11111111-1111-4111-8111-111111111111@1768262400000" to
+                "DeviceProfile(formFactor=DESKTOP, userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36, platform=macOS, platformVersion=14.5.0, model=, isMobile=false, brands=[Brand(name=Chromium, version=142), Brand(name=Google Chrome, version=142), Brand(name=Not?A_Brand, version=24)], screenWidth=1512, screenHeight=982, devicePixelRatio=2.0, hardwareConcurrency=8, deviceMemory=16)",
+            "22222222-2222-4222-8222-222222222222@1776038400000" to
+                "DeviceProfile(formFactor=DESKTOP, userAgent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36, platform=Windows, platformVersion=15.0.0, model=, isMobile=false, brands=[Brand(name=Chromium, version=145), Brand(name=Google Chrome, version=145), Brand(name=Not?A_Brand, version=24)], screenWidth=1920, screenHeight=1080, devicePixelRatio=1.0, hardwareConcurrency=8, deviceMemory=16)",
+            "abcdef00-0000-4000-8000-000000000000@1785542400000" to
+                "DeviceProfile(formFactor=DESKTOP, userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36, platform=macOS, platformVersion=14.5.0, model=, isMobile=false, brands=[Brand(name=Chromium, version=149), Brand(name=Google Chrome, version=149), Brand(name=Not?A_Brand, version=24)], screenWidth=1512, screenHeight=982, devicePixelRatio=2.0, hardwareConcurrency=8, deviceMemory=16)",
+        )
     }
 }
