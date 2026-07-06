@@ -9,7 +9,7 @@
 
 **Data poisoning for your everyday tracking.**
 
-Fauxx is an open-source Android privacy tool that poisons data broker and ad-tech profiles by generating continuous, plausible, off-demographic synthetic activity from your device. The goal is simple: make your real behavioral signal statistically indistinguishable from noise.
+Fauxx is an open-source Android privacy tool that poisons data broker and ad-tech profiles by generating continuous, plausible, off-demographic synthetic activity from your device. The goal is simple: bury your real behavioral signal under a steady stream of coherent, believable decoy activity, so profilers can't tell the real you from the plausible fakes. Not easily-filterable noise — deception that reads as real people.
 
 > 💬 **Questions about how Fauxx works, or wishlist ideas?** Use [Discussions](https://github.com/digital-grease/fauxx/discussions). Bug reports and feature requests stay in [Issues](https://github.com/digital-grease/fauxx/issues).
 
@@ -21,11 +21,11 @@ Fauxx is an open-source Android privacy tool that poisons data broker and ad-tec
 
 Every search you make, every link you click, every location you visit is collected by data brokers, ad networks, and analytics platforms. Over time, they build a detailed profile of who you are, what you want, and what you're likely to do next. That profile is sold, traded, and collated with other data and profiles to continue the process.
 
-Fauxx addresses this by injecting continuous, category-weighted synthetic activity that obscures your real interests under a statistical cloud. Your genuine signal becomes noise.
+Fauxx addresses this by injecting continuous, category-weighted synthetic activity that obscures your real interests under a cloud of plausible, believable decoys. Your genuine signal gets lost among convincing fakes — not random noise a broker can filter out, but coherent activity that looks like real people.
 
 ## How It Works
 
-Fauxx uses a **Demographic Distancing Engine**—a layered system that determines what noise to generate:
+Fauxx uses a **Demographic Distancing Engine**—a layered system that decides what synthetic activity to generate:
 
 ### Layer 0: Uniform Entropy (Always Active)
 
@@ -82,9 +82,9 @@ Powered by a database of 800+ world city centers. Location selection is weighted
 
 **Setup:** Android requires you to designate the mock-location app explicitly. Enable Developer Options (Settings → About phone → tap Build Number 7 times), then Developer Options → "Select mock location app" → Fauxx. The Location Spoofing toggle surfaces this dialog on first enable. The Play Store build does not include this module; F-Droid / sideload only.
 
-### 4. Fingerprint Rotation
+### 4. Device Identity
 
-Continuously rotates User-Agent strings (from a pool of 275+ real-world UA strings), injects canvas fingerprint noise via JavaScript, randomizes Accept-Language and Accept-Encoding headers, and periodically resets the Android Advertising ID. This layer disrupts browser fingerprinting and device-level profiling.
+Presents a **stable, coherent device identity** per synthetic persona rather than churning random User-Agents. Each persona gets one believable Android device — a consistent User-Agent plus matching client-hint and `navigator` values (hardware concurrency, device memory, screen) — derived deterministically from the persona, so the synthetic traffic reads as one real device instead of the User-Agent-hopping pattern anti-fraud systems trivially flag and discard. The browser version drifts slowly over time to mimic real auto-updates. Canvas fingerprint noise is injected via JavaScript, and the Android Advertising ID is periodically reset.
 
 ### 5. Cookie Saturation
 
@@ -198,7 +198,7 @@ Toggle each poison module independently:
 - Search Poisoning (choose search engines)
 - Ad Pollution
 - Location Spoofing (location spoofing mode)
-- Fingerprint Rotation
+- Device Identity
 - Cookie Saturation (URL categories)
 - App Signal Noise
 - DNS Noise
