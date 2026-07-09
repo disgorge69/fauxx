@@ -6,6 +6,7 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import com.fauxx.data.crawllist.DomainBlocklist
 import com.fauxx.data.db.LogMetadata
+import com.fauxx.data.device.DeviceProfile
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -86,11 +87,28 @@ class PhantomWebViewPool @Inject constructor(
     private val currentUserAgent = AtomicReference<String?>(null)
 
     /**
+     * Current persona device (issue #242): its UA is applied to WebViews on acquire and its fixed
+     * navigator values are injected on page load (via the client's device provider). Null when Layer
+     * 3 is off, in which case the injected navigator values fall back to fixed defaults.
+     */
+    private val currentDevice = AtomicReference<DeviceProfile?>(null)
+
+    /**
      * Set the User-Agent string that will be applied to WebViews when they are acquired.
      * Called by FingerprintModule when a UA rotation action fires.
      */
     fun setUserAgent(ua: String) {
         currentUserAgent.set(ua)
+    }
+
+    /**
+     * Bind the active persona's [device] (issue #242): applies its UA on the next acquire and makes
+     * the injected navigator overrides use its fixed hardwareConcurrency/deviceMemory. Called by
+     * FingerprintModule when a persona is active.
+     */
+    fun setDevice(device: DeviceProfile) {
+        currentDevice.set(device)
+        currentUserAgent.set(device.userAgent)
     }
 
     /**
@@ -297,6 +315,7 @@ class PhantomWebViewPool @Inject constructor(
             blocklist,
             resourceCounter = resourceCounter,
             onRenderGone = ::handleRendererGone,
+            deviceProvider = { currentDevice.get() },
         )
         webView.isClickable = false
         webView.isFocusable = false

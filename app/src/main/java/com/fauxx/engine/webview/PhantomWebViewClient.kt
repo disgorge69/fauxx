@@ -14,6 +14,7 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.fauxx.data.crawllist.DomainBlocklist
+import com.fauxx.data.device.DeviceProfile
 import java.util.concurrent.atomic.AtomicInteger
 
 /** MIME types that should not be loaded in background WebViews. */
@@ -39,14 +40,18 @@ class PhantomWebViewClient(
     // Issue #210: invoked with the affected WebView when its renderer process dies, so the pool
     // can destroy the broken instance and swap in a fresh one. onRenderProcessGone ALWAYS returns
     // true regardless, so Android never terminates the whole app process on a renderer death.
-    private val onRenderGone: ((WebView) -> Unit)? = null
+    private val onRenderGone: ((WebView) -> Unit)? = null,
+    // Issue #242: supplies the active persona's device at injection time, so the navigator
+    // overrides (hardwareConcurrency/deviceMemory) match the persona's stable device rather than
+    // being per-read random. Read per navigation so a persona rotation is reflected on the next load.
+    private val deviceProvider: () -> DeviceProfile? = { null }
 ) : WebViewClient() {
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         super.onPageStarted(view, url, favicon)
         // On high-scrutiny endpoints (search engines) inject only the benign GPC signal;
         // the automation-shaped overrides are themselves a detection tell there (#168/#169).
-        val scripts = if (isHighScrutiny(url)) JSInjector.MINIMAL_SCRIPTS else JSInjector.ALL_SCRIPTS
+        val scripts = if (isHighScrutiny(url)) JSInjector.MINIMAL_SCRIPTS else JSInjector.allScripts(deviceProvider())
         view.evaluateJavascript(scripts) { result ->
             if (result != null && result != "null" && result.contains("error", ignoreCase = true)) {
                 Timber.w("JS injection may have failed on $url: $result")
