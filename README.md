@@ -13,6 +13,8 @@ Fauxx is an open-source Android privacy tool that poisons data broker and ad-tec
 
 > 💬 **Questions about how Fauxx works, or wishlist ideas?** Use [Discussions](https://github.com/digital-grease/fauxx/discussions). Bug reports and feature requests stay in [Issues](https://github.com/digital-grease/fauxx/issues).
 
+> 💬 **Looking for AI Usage discolosure?** See [AIUSE.md](https://github.com/digital-grease/fauxx/blob/main/AIUSE.md)
+
 > 📦 **Where to get it:** Fauxx ships via **F-Droid**, **GitHub Releases**, and sideload / Obtainium. **The Google Play build is no longer maintained or published.** Play is too restrictive for Fauxx's full feature set (it disallows the location-spoofing and ad-profile-pollution modules), and it is moving toward requiring the age-verification API, which a no-account privacy tool has no business integrating. The `play` build flavor stays in the source in case that ever changes (CI still debug-compiles and unit-tests it so it doesn't rot unnoticed), but it carries no quality gates and is no longer built, shipped, or allowed to block a release.
 
 > 🖥️ **Desktop companion (alpha):** [fauxx-desktop](https://github.com/digital-grease/fauxx-desktop) is a new, early-alpha cross-device privacy command center (a Rust headless core with an Iced GUI). It runs decoy generation on a desktop or homelab box and shares an encrypted, local-only LAN persona-sync protocol with the Android app, so paired devices can keep one coherent persona. It is alpha software, so expect rough edges while it stabilizes.
